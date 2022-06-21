@@ -17,7 +17,6 @@ const UserNavBar = () => {
 
   return (
     <>
-
       <ul
         className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
         id="accordionSidebar"
@@ -34,7 +33,6 @@ const UserNavBar = () => {
 
         <hr className="sidebar-divider my-0" />
 
-        
         <li className="nav-item active">
           <Link className="nav-link" to="/">
             <FontAwesomeIcon icon={faHouse} />
@@ -54,7 +52,6 @@ const UserNavBar = () => {
         <hr className="sidebar-divider" />
 
         <div className="sidebar-heading">Interface</div>
-        
 
         <li className="nav-item active">
           <Link className="nav-link" to="/user-router/user-home">
@@ -97,7 +94,7 @@ const UserNavBar = () => {
         <hr className="sidebar-divider" />
 
         <li className="nav-item active">
-           <Link className="nav-link" to="/user-router/team">
+          <Link className="nav-link" to="/user-router/team">
             <FontAwesomeIcon icon={faFolderPlus} />
             <i className="fas fa-fw fa-cog"></i>
             <span>Admin Page</span>
