@@ -12,12 +12,15 @@ const UserRouter = () => {
         <div className="w-10">
           <UserNavBar></UserNavBar>
         </div>
-        <div className="w-90"></div>
-        <Routes>
-          <Route path="team-calender" element={<TeamCalender />} />
-          <Route path="user-home" element={<UserHome />} />
-          <Route path="team" element={<Team />} />
-        </Routes>
+
+        <div className="w-100">
+          {" "}
+          <Routes>
+            <Route path="team-calender" element={<TeamCalender />} />
+            <Route path="user-home" element={<UserHome />} />
+            <Route path="team" element={<Team />} />
+          </Routes>
+        </div>
       </div>
     </>
   );
