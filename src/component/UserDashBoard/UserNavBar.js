@@ -32,7 +32,7 @@ const UserNavBar = () => {
         <hr className="sidebar-divider my-0" />
 
         <li className="nav-item active">
-          <a className="nav-link" href="/dashboard/user">
+          <a className="nav-link" href="/dashboard/user#">
             <FontAwesomeIcon icon={faGaugeHigh} />
             {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
             <span> Dashboard</span>
@@ -44,7 +44,7 @@ const UserNavBar = () => {
         <div className="sidebar-heading">Interface</div>
 
         <li className="nav-item active">
-          <a className="nav-link " href="#">
+          <a className="nav-link" href="/dashboard/user#">
             <FontAwesomeIcon icon={faUser} />
             <span>User Page</span>
           </a>
@@ -67,7 +67,7 @@ const UserNavBar = () => {
           </a>
           <div
             id="collapseTwo"
-            className=  {teamShow? "collapse show" : "collapse"} 
+            className={teamShow ? "collapse show" : "collapse"}
           >
             <div className="bg-white py-2 collapse-inner rounded">
               <a className="collapse-item" href="/dashboard/teamCalender">
