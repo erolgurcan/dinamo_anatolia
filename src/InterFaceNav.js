@@ -10,7 +10,7 @@ const InterFaceNav = () => {
     <Fragment>
       <BrowserRouter>
         <Routes>
-          <Route path={""} element={<LandingPage />} />
+          <Route path={"/"} element={<LandingPage />} />
           <Route path={"/login"} element={<Login />} />
           <Route path={"/dashboard/*"} element={<UserDashBoard />} />
         </Routes>
