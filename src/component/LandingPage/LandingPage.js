@@ -17,7 +17,6 @@ const LandingPage = () => {
           </div>
         </div>
       </header>
-
       <section id="scroll">
         <div class="container px-5">
           <div class="row gx-5 align-items-center">
