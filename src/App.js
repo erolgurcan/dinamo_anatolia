@@ -1,12 +1,17 @@
 import "./App.css";
 import { Fragment } from "react";
 import InterFaceNav from "./InterFaceNav";
+import { Link } from "react-router-dom";
+import LandingPage from "./component/LandingPage/LandingPage";
+import Navigation from "./component/Navigation/Navigation";
 
 function App() {
   return (
-    <Fragment>
-      <InterFaceNav></InterFaceNav>
-    </Fragment>
+    <>
+      {" "}
+      <Navigation />
+      <LandingPage />
+    </>
   );
 }
 

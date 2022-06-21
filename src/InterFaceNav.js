@@ -8,13 +8,13 @@ import UserDashBoard from "./component/UserDashBoard/UserDashBoard";
 const InterFaceNav = () => {
   return (
     <Fragment>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path={"/"} element={<LandingPage />} />
           <Route path={"/login#"} element={<Login />} />
           <Route path={"/dashboard/*"} element={<UserDashBoard />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </Fragment>
   );
 };
