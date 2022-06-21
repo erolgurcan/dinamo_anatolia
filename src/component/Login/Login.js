@@ -2,7 +2,6 @@ import React from "react";
 import "./Login.css";
 import UserDashBoard from "../UserDashBoard/UserDashBoard";
 import Navigation from "../Navigation/Navigation";
-
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const navigateTo = () => {
-    navigate("/dashboard", { replace: true });
+    navigate("/user-router/user-home", { replace: true });
   };
 
   const onSubmitHandler = (e) => {
@@ -24,7 +23,7 @@ const Login = () => {
 
   return (
     <>
-      <Navigation></Navigation>
+    <Navigation></Navigation>
       <section className="vh-100 login-background">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
