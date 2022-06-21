@@ -6,6 +6,7 @@ import {
   faFolderPlus,
   faFutbol,
   faGaugeHigh,
+  faHouse,
   faSmile,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -33,8 +34,17 @@ const UserNavBar = () => {
 
         <hr className="sidebar-divider my-0" />
 
+        
         <li className="nav-item active">
-          <Link className="nav-link" to="/user-router/home">
+          <Link className="nav-link" to="/">
+            <FontAwesomeIcon icon={faHouse} />
+            {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
+            <span> Main Page</span>
+          </Link>
+        </li>
+
+        <li className="nav-item active">
+          <Link className="nav-link" to="/user-router/user-home">
             <FontAwesomeIcon icon={faGaugeHigh} />
             {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
             <span> Dashboard</span>
@@ -44,9 +54,10 @@ const UserNavBar = () => {
         <hr className="sidebar-divider" />
 
         <div className="sidebar-heading">Interface</div>
+        
 
         <li className="nav-item active">
-          <Link className="nav-link" to="/user-router/home">
+          <Link className="nav-link" to="/user-router/user-home">
             <FontAwesomeIcon icon={faUser} />
             {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
             <span> Dashboard</span>
@@ -76,9 +87,9 @@ const UserNavBar = () => {
               <Link className="collapse-item" to="/user-router/team-calender">
                 Calender
               </Link>
-              <a className="collapse-item" href="cards.html">
+              <Link className="collapse-item" to="/user-router/team">
                 Team
-              </a>
+              </Link>
             </div>
           </div>
         </li>
@@ -86,11 +97,11 @@ const UserNavBar = () => {
         <hr className="sidebar-divider" />
 
         <li className="nav-item active">
-          <a className="nav-link " href="#">
+           <Link className="nav-link" to="/user-router/team">
             <FontAwesomeIcon icon={faFolderPlus} />
             <i className="fas fa-fw fa-cog"></i>
             <span>Admin Page</span>
-          </a>
+          </Link>
         </li>
       </ul>
     </>
