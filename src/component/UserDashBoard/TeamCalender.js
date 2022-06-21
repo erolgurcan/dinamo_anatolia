@@ -2,13 +2,6 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 
 const TeamCalender = () => {
-
-const calenderData = [
-    {match: "07/01/2022",
-    eventID: 1,
-    oponentName: "KSK"}
-]
-
   return (
     <>
       <div id="content-wrapper" className="d-flex flex-column w-100">
@@ -57,9 +50,9 @@ const calenderData = [
             </li>
           </ul>
         </nav>
-        <div className = "w-75 mx-auto">
-        <h3>Upcoming Events</h3>
-        <br></br>
+        <div className="w-75 mx-auto">
+          <h3>Upcoming Events</h3>
+          <br></br>
           <Card>
             <Card.Header>Featured</Card.Header>
             <Card.Body>

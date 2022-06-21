@@ -16,20 +16,19 @@
 // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import Login from "./component/Login/Login";
+import UserRouter from "./component/UserDashBoard/UserRouter";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root")
-);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-      <Routes>
+    <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="login" element={<Login />} />
+      <Route path = "user-router/*" element = {  <UserRouter/> }></Route>
     </Routes>
   </BrowserRouter>
 );

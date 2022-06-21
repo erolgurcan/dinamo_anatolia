@@ -1,24 +1,25 @@
-import react, { Fragment } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
+import React from "react";
+import { Route, Routes, Link } from "react-router-dom";
 import UserHome from "./UserHome";
-import UserNavBar from "./UserNavBar";
 import TeamCalender from "./TeamCalender";
+import UserNavBar from "./UserNavBar";
+
 const UserRouter = () => {
   return (
-    <Fragment className="d-flex">
+    <>
       <div className="d-flex">
-        <UserNavBar></UserNavBar>
+        <div className="w-10">
+          <UserNavBar></UserNavBar>
+        </div>
+
+        <div className="w-90"></div>
+
         <Routes>
-          <Route path={"/user"} element={<UserHome />} />
-          <Route path={"/teamCalender"} element={<TeamCalender />} />
+          <Route path="team-calender" element={<TeamCalender />} />
+          <Route path="user-home" element={<UserHome />} />
         </Routes>
       </div>
-    </Fragment>
+    </>
   );
 };
 

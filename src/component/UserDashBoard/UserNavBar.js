@@ -9,12 +9,14 @@ import {
   faSmile,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const UserNavBar = () => {
   const [teamShow, setTeamShow] = useState(false);
 
   return (
     <>
+
       <ul
         className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
         id="accordionSidebar"
@@ -32,11 +34,11 @@ const UserNavBar = () => {
         <hr className="sidebar-divider my-0" />
 
         <li className="nav-item active">
-          <a className="nav-link" href="/dashboard/user#">
+          <Link className="nav-link" to="/user-router/home">
             <FontAwesomeIcon icon={faGaugeHigh} />
             {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
             <span> Dashboard</span>
-          </a>
+          </Link>
         </li>
 
         <hr className="sidebar-divider" />
@@ -44,10 +46,11 @@ const UserNavBar = () => {
         <div className="sidebar-heading">Interface</div>
 
         <li className="nav-item active">
-          <a className="nav-link" href="/dashboard/user#">
+          <Link className="nav-link" to="/user-router/home">
             <FontAwesomeIcon icon={faUser} />
-            <span>User Page</span>
-          </a>
+            {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
+            <span> Dashboard</span>
+          </Link>
         </li>
 
         <hr className="sidebar-divider" />
@@ -61,18 +64,18 @@ const UserNavBar = () => {
             console.log(teamShow);
           }}
         >
-          <a className="nav-link " href="#">
+          <div className="nav-link ">
             <FontAwesomeIcon icon={faFutbol} />
             <span>Team Page</span>
-          </a>
+          </div>
           <div
             id="collapseTwo"
             className={teamShow ? "collapse show" : "collapse"}
           >
             <div className="bg-white py-2 collapse-inner rounded">
-              <a className="collapse-item" href="/dashboard/teamCalender">
+              <Link className="collapse-item" to="/user-router/team-calender">
                 Calender
-              </a>
+              </Link>
               <a className="collapse-item" href="cards.html">
                 Team
               </a>

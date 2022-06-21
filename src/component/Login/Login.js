@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const navigateTo = () => {
-    navigate("/dashboard", { replace: true });
+    navigate("/user-router", { replace: true });
   };
 
   const onSubmitHandler = (e) => {

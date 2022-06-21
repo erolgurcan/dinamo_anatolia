@@ -1,13 +1,17 @@
-import React from 'react'
-import UserRouter from './UserRouter'
-import { Fragment } from 'react'
+import React from "react";
+import { Fragment } from "react";
+import UserHome from "./UserHome";
+import UserNavBar from "./UserNavBar";
 
 const UserDashBoard = () => {
   return (
-    <Fragment>
-        <UserRouter></UserRouter>
-    </Fragment>
-  )
-}
+    <div className="d-flex">
+      <div className="w-10">
+        <UserNavBar></UserNavBar>
+      </div>
 
-export default UserDashBoard
+    </div>
+  );
+};
+
+export default UserDashBoard;
