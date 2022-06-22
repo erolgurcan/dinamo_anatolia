@@ -24,7 +24,7 @@ const UserNavBar = () => {
         <a
           className="sidebar-brand d-flex align-items-center justify-content-center"
           href="/dashboard"
-        >
+        > 
           <div className="sidebar-brand-icon rotate-n-15">
             <FontAwesomeIcon icon={faSmile} />
           </div>

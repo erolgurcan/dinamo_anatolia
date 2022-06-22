@@ -29,9 +29,8 @@ const Login = () => {
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
               <div className="card" style={{ borderRadius: "1rem" }}>
-                <div className="row g-0 ">
                   <div className="col-md-2 col-lg-7 d-flex align-items-center m-auto">
-                    <div className="card-body p-4  text-black">
+                    <div className="card-body text-black">
                       <form>
                         <div className="d-flex align-items-center mb-3 pb-1">
                           <i
@@ -97,7 +96,6 @@ const Login = () => {
                       </form>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
