@@ -2,6 +2,21 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 
 const TeamCalender = () => {
+  const [event, setEvent] = useState([]);
+
+  const getEvent = async () => {
+    const response = await fetch(
+      "https://dinamo-anatolia.herokuapp.com/get_event"
+    );
+    const jsonData = await response.json();
+    setEvent(jsonData);
+    console.log(jsonData);
+  };
+
+  useEffect(() => {
+    getEvent();
+  }, []);
+
   return (
     <>
       <div id="content-wrapper" className="d-flex flex-column w-100">
@@ -53,16 +68,18 @@ const TeamCalender = () => {
         <div className="w-75 mx-auto">
           <h3>Upcoming Events</h3>
           <br></br>
-          <Card>
-            <Card.Header>Featured</Card.Header>
-            <Card.Body>
-              <Card.Title>Special title treatment</Card.Title>
-              <Card.Text>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </Card.Text>
-            </Card.Body>
-          </Card>
+
+          {event.map((data) => (
+            <Card key = {data.event_id} >
+              <Card.Header> {"Dinamo Anatolia vs." + data.opponent } </Card.Header>
+              <Card.Body>
+                <Card.Title> {"Date: " + data.event_date} </Card.Title>
+                <Card.Text>
+                      { "Location:" + event_address  + "Match Score: " + "Dinamo Anatola"  + data.team_score  + " " + data.opponent + " " + data.opponent_score}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          ))}
         </div>
       </div>
     </>
