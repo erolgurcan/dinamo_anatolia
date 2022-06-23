@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
 
 const TeamCalender = () => {
   const [event, setEvent] = useState([]);
@@ -66,7 +67,7 @@ const TeamCalender = () => {
           </ul>
         </nav>
         <div className="w-75 mx-auto">
-          <h3>Upcoming Events</h3>
+          <h3>Upcoming Evesnts</h3>
           <br></br>
 
           {event.map((data) => (
@@ -75,7 +76,7 @@ const TeamCalender = () => {
               <Card.Body>
                 <Card.Title> {"Date: " + data.event_date} </Card.Title>
                 <Card.Text>
-                      { "Location:" + event_address  + "Match Score: " + "Dinamo Anatola"  + data.team_score  + " " + data.opponent + " " + data.opponent_score}
+                      { "Location:" + data.event_address  + "Match Score: " + "Dinamo Anatola"  + data.team_score  + " " + data.opponent + " " + data.opponent_score}
                 </Card.Text>
               </Card.Body>
             </Card>

@@ -7,7 +7,6 @@ const { Client } = require("pg");
 app.use(cors());
 app.use(express.json());
 
-
 app.use(express.static(path.join(__dirname, "build")));
 
 const client = new Client({
@@ -19,24 +18,21 @@ const client = new Client({
 
 client.connect();
 
-//DB Settings
-
-
-app.use(express.static(path.join(__dirname, "build")));
+// DB Settings
 
 app.listen(PORT, () => {
   console.log("Aplication started on port " + PORT);
 });
 
-app.get("/test", (req, res) => {
-  try {
-    client.query("select * from test", (err, response) => {
-      res.json(response.rows);
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-});
+// app.get("/test", (req, res) => {
+//   try {
+//     client.query("select * from test", (err, response) => {
+//       res.json(response.rows);
+//     });
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// });
 
 app.get("/get_event", (req, res) => {
     try {
