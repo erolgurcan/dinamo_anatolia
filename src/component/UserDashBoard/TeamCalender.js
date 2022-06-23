@@ -67,7 +67,7 @@ const TeamCalender = () => {
           </ul>
         </nav>
         <div className="w-75 mx-auto">
-          <h3>Upcoming Evesnts</h3>
+          <h3>Upcoming Events</h3>
           <br></br>
 
           {event.map((data) => (
