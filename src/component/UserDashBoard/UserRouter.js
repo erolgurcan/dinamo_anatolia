@@ -4,6 +4,7 @@ import UserHome from "./UserHome";
 import TeamCalender from "./TeamCalender";
 import UserNavBar from "./UserNavBar";
 import Team from "./Team";
+import TeamPlayers from "./TeamPlayers";
 
 const UserRouter = () => {
   return (
@@ -19,6 +20,7 @@ const UserRouter = () => {
             <Route path="team-calender" element={<TeamCalender />} />
             <Route path="user-home" element={<UserHome />} />
             <Route path="team" element={<Team />} />
+            <Route path="players" element={< TeamPlayers/>} />
           </Routes>
         </div>
       </div>

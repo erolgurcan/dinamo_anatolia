@@ -9,14 +9,20 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "build")));
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
+if ( process.env.NODE_ENV === "production" ) {
 
-client.connect();
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  });
+  
+  client.connect();
+
+}
+
+console.log(process.env.NODE_ENV);
 
 // DB Settings
 
@@ -43,4 +49,16 @@ app.get("/get_event", (req, res) => {
       console.log(error.message);
     }
   });
+
+
+  
+app.get("/get_players", (req, res) => {
+  try {
+    client.query("select * from players", (err, response) => {
+      res.json(response.rows);
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 

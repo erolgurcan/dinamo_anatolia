@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Badge } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 const TeamCalender = () => {
@@ -67,18 +67,46 @@ const TeamCalender = () => {
           </ul>
         </nav>
         <div className="w-75 mx-auto">
-          <h3>Upcoming Events</h3>
+          <h3>Events</h3>
           <br></br>
 
           {event.map((data) => (
-            <Card key = {data.event_id} >
-              <Card.Header> {"Dinamo Anatolia vs." + data.opponent } </Card.Header>
+            <Card key={data.event_id}>
+              <Card.Header>
+                {" "}
+                <strong> {"Dinamo Anatolia"} </strong> {"vs "}{" "}
+                <strong> {data.opponent_name} </strong>{" "}
+              </Card.Header>
               <Card.Body>
-                <Card.Title> {"Date: " + data.event_date} </Card.Title>
+                <Card.Title>
+                  <div>
+                    <div>
+                      {" "}
+                      <strong> {"Date: "} </strong>{" "}
+                      <Badge bg="secondary">
+                        {" "}
+                        {data.event_date.split("-")[0] +
+                          "-" +
+                          data.event_date.split("-")[1] +
+                          "-" +
+                          data.event_date.split("-")[2].split("T")[0]}{" "}
+                      </Badge>{" "}
+                    </div>
+                    <br></br>
+                    <div>
+                      <strong> {"Macth Score: "} </strong>{" "}
+                      {data.event_location[0].toUpperCase() +
+                        data.event_location.slice(1)}
+                    </div>
+                  </div>
+                </Card.Title>
                 <Card.Text>
-                      { "Location:" + data.event_address  + "Match Score: " + "Dinamo Anatola"  + data.team_score  + " " + data.opponent + " " + data.opponent_score}
+                  <strong> {"Location: "} </strong>{" "}
+                  {data.event_location[0].toUpperCase() +
+                    data.event_location.slice(1)}
                 </Card.Text>
               </Card.Body>
+              <br></br>
             </Card>
           ))}
         </div>
