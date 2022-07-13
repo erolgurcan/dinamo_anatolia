@@ -5,7 +5,7 @@ const TeamPlayers = () => {
 
     const [event, setEvent] = useState([]);
 
-    const getEvent = async () => {
+    const getPlayer = async () => {
       const response = await fetch(
         "https://dinamo-anatolia.herokuapp.com/get_players"
       );
@@ -15,7 +15,7 @@ const TeamPlayers = () => {
     };
   
     useEffect(() => {
-      getEvent();
+        getPlayer();
     }, []);
   
 
