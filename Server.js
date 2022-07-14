@@ -18,7 +18,7 @@ if ( process.env.NODE_ENV === "production" ) {
     },
   });
   
-  client.connect();
+
 
 }
 
@@ -30,6 +30,15 @@ const client = new Client({
 });
 
 client.connect();
+
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
+
+// client.connect();
  
 
 console.log(process.env.NODE_ENV);
@@ -38,7 +47,7 @@ console.log(process.env.NODE_ENV);
 
 app.listen(PORT, () => {
   console.log("Aplication started on port " + PORT);
-  console
+
 });
 
 // app.get("/test", (req, res) => {
@@ -61,11 +70,20 @@ app.get("/get_event", (req, res) => {
     }
   });
 
-
-  
+ 
 app.get("/get_players", (req, res) => {
   try {
-    client.query("select * from players", (err, response) => {
+    client.query("select * from players order by player_full_name", (err, response) => {
+      res.json(response.rows);
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/score_table", (req, res) => {
+  try {
+    client.query("select * from score_table", (err, response) => {
       res.json(response.rows);
     });
   } catch (error) {

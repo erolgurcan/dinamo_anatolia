@@ -9557,7 +9557,7 @@ button.bg-dark:focus {
 
 .text-uppercase, .dropdown .dropdown-menu .dropdown-header, .sidebar .sidebar-heading {
   text-transform: uppercase !important;
-  width: 20%;
+  width: 30%;
 }
 
 .text-capitalize {
@@ -10321,8 +10321,8 @@ a:focus {
 }
 
 .sidebar {
-  width: 6.5rem;
-  min-height: 100vh;
+  width: 8rem;
+  min-height: 150%;
 }
 
 .sidebar .nav-item {

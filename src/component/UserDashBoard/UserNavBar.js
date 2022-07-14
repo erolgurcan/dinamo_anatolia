@@ -18,12 +18,11 @@ const UserNavBar = () => {
   return (
     <>
       <ul
-        className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        className="navbar-nav bg-gradient-secondary sidebar sidebar-dark"
         id="accordionSidebar"
       >
         <a
           className="sidebar-brand d-flex align-items-center justify-content-center"
-          href="/dashboard"
         > 
           <div className="sidebar-brand-icon rotate-n-15">
             <FontAwesomeIcon icon={faSmile} />
