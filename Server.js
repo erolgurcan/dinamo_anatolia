@@ -22,12 +22,22 @@ if ( process.env.NODE_ENV === "production" ) {
 
 }
 
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+client.connect();
+
 console.log(process.env.NODE_ENV);
 
 // DB Settings
 
 app.listen(PORT, () => {
   console.log("Aplication started on port " + PORT);
+  console
 });
 
 // app.get("/test", (req, res) => {
