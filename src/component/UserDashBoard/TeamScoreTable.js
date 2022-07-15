@@ -63,7 +63,7 @@ const TeamScoreTable = () => {
                       )}{" "}
                     </h2>
 
-                    {s.scored_by&& <h4> {"Scored by "  +  s.scored_by } </h4> }
+                    {s.scored_by&& <h4> {"Scored by   "  +  s.scored_by } </h4> }
                     
                   </Card.Text>
                 </Card.Body>
