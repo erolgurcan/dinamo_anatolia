@@ -1,15 +1,4 @@
 import React from "react";
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  VerticalGridLines,
-  HorizontalGridLines,
-  VerticalBarSeries,
-  VerticalBarSeriesCanvas,
-  BarSeries
-} from "react-vis";
-
 import { useState, useEffect } from "react";
 
 
