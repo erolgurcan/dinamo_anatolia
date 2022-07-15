@@ -1,11 +1,34 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
+import { TotalGoal, ConceededGoal } from "./TeamData/TeamInfo";
+
+const data = [{name: 'Page A', uv: 400}, {name: 'Page A', uv: 400} ];
+
 
 const Team = () => {
+
+  const [score, setScore] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getEvent = async () => {
+    const response = await fetch(
+      "https://dinamo-anatolia.herokuapp.com/score_table"
+    );
+    const jsonData = await response.json();
+    setScore(jsonData);
+    console.log(jsonData);
+    setLoading(true);
+  };
+
+  useEffect(() => {
+    getEvent();
+  }, []);
+
+
+
   return (
     <>
       <div id="content-wrapper" className="d-flex flex-column w-100">
-
-
         <div class="container-fluid pt-4 mt-4 ">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -21,7 +44,7 @@ const Team = () => {
                         Total Goals
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        40,000
+                        <TotalGoal data = {score} ></TotalGoal>
                       </div>
                     </div>
                     <div class="col-auto">
@@ -37,10 +60,10 @@ const Team = () => {
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Assist
+                        Conceeded Goal
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        $215,000
+                        <ConceededGoal data = {score} ></ConceededGoal>
                       </div>
                     </div>
                     <div class="col-auto">
@@ -59,7 +82,7 @@ const Team = () => {
                         Total Played
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        18
+                        { score.length  }
                       </div>
                     </div>
                     <div class="col-auto">
@@ -75,7 +98,7 @@ const Team = () => {
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Total Debt
+                        Standing 
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
                         $215,000
@@ -99,7 +122,26 @@ const Team = () => {
 
                   <div class="card-body">
                     <div class="chart-area">
-                      <canvas id="myAreaChart"></canvas>
+                    <BarChart width={600} height={300} data={data}>
+                        <XAxis dataKey="name" stroke="#8884d8" />
+                        <YAxis />
+                        <Tooltip
+                          wrapperStyle={{ width: 100, backgroundColor: "#ccc" }}
+                        />
+                        <Legend
+                          width={100}
+                          wrapperStyle={{
+                            top: 40,
+                            right: 20,
+                            backgroundColor: "#f5f5f5",
+                            border: "1px solid #d5d5d5",
+                            borderRadius: 3,
+                            lineHeight: "40px",
+                          }}
+                        />
+                        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                        <Bar dataKey="uv" fill="#8884d8" barSize={30} />
+                      </BarChart>
                     </div>
                   </div>
                 </div>
@@ -113,7 +155,7 @@ const Team = () => {
                   </div>
                   <div class="card-body">
                     <div class="chart-area">
-                      <canvas id="myAreaChart"></canvas>
+
                     </div>
                   </div>
                 </div>

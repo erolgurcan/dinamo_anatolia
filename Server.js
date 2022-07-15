@@ -91,3 +91,24 @@ app.get("/score_table", (req, res) => {
   }
 });
 
+
+app.get("/total_score", (req, res) => {
+  try {
+    client.query("select * from score_table", (err, response) => {
+      res.json(response.rows);
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+
+app.get("/standing_table", (req, res) => {
+  try {
+    client.query("select * from standing_table st", (err, response) => {
+      res.json(response.rows);
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
