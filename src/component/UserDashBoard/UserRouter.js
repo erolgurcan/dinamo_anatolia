@@ -5,6 +5,7 @@ import TeamCalender from "./TeamCalender";
 import UserNavBar from "./UserNavBar";
 import Team from "./Team";
 import TeamPlayers from "./TeamPlayers";
+import TeamScoreTable from "./TeamScoreTable";
 
 const UserRouter = () => {
   return (
@@ -21,6 +22,7 @@ const UserRouter = () => {
             <Route path="user-home" element={<UserHome />} />
             <Route path="team" element={<Team />} />
             <Route path="players" element={< TeamPlayers/>} />
+            <Route path="score_table" element={< TeamScoreTable/>} />
           </Routes>
         </div>
       </div>

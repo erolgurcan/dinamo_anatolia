@@ -18,8 +18,6 @@ if ( process.env.NODE_ENV === "production" ) {
     },
   });
   
-
-
 }
 
 const client = new Client({
@@ -91,3 +89,14 @@ app.get("/score_table", (req, res) => {
   }
 });
 
+
+
+app.get("/total_goal", (req, res) => {
+  try {
+    client.query("select sum(team_score) from score s ", (err, response) => {
+      res.json(response.rows);
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
