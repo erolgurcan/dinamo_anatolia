@@ -93,7 +93,7 @@ app.get("/score_table", (req, res) => {
 
 app.get("/total_goal", (req, res) => {
   try {
-    client.query("select sum(team_score) from score s ", (err, response) => {
+    client.query("select sum(team_score) from score ", (err, response) => {
       res.json(response.rows);
     });
   } catch (error) {
