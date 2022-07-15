@@ -89,6 +89,9 @@ const UserNavBar = () => {
               <Link className="collapse-item" to="/user-router/players">
                 Players
               </Link>
+              <Link className="collapse-item" to="/user-router/team_score">
+                Score Table
+              </Link>
             </div>
           </div>
         </li>
