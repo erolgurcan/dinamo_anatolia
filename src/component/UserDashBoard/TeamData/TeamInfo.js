@@ -24,3 +24,20 @@ export const ConceededGoal = ( {data} ) => {
     
     return conceededGoal;
 }
+
+export const Standing = ( { data }) => {
+
+
+    console.log(data);
+    let standingNum = 0;
+
+    data.forEach(element => {
+        if( element.team_name === "Dinamo Anatolia"){
+            standingNum = element.standing;
+            
+        }  
+    });
+
+    return standingNum;
+
+} 
