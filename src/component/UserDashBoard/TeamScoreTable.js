@@ -82,7 +82,7 @@ const TeamScoreTable = () => {
               </Card>
               <br></br>
             </div>
-          ))}
+          ))} 
         </div>
       )}
     </>
