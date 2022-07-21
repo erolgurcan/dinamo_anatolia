@@ -39,7 +39,6 @@ app.get("/get_event", (req, res) => {
     }
   });
 
- 
 app.get("/get_players", (req, res) => {
   try {
     client.query("select * from players order by player_full_name", (err, response) => {
@@ -60,7 +59,6 @@ app.get("/score_table", (req, res) => {
   }
 });
 
-
 app.get("/total_score", (req, res) => {
   try {
     client.query("select * from score_table", (err, response) => {
@@ -70,7 +68,6 @@ app.get("/total_score", (req, res) => {
     console.log(error.message);
   }
 });
-
 
 app.get("/standing_table", (req, res) => {
   try {
