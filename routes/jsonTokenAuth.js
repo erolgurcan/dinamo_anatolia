@@ -16,29 +16,28 @@ client.connect();
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    console.log(
+
+    const user = client.query(
       "select * from users where  user_email = " + "'" + email + "';"
     );
 
-    client.query(
-      "select * from users where  user_email = " + "'" + email + "';",
-      (err, response) => {
-       console.log(response.rows);
-      }
-    );
-   
-    if (response.rows.length !== 0 ){
-        res.status(401).send("User already exists");
-        return;
-    };
+    if (user.rows.length > 0) {
+      console.log(user.rows.length);
+      res.status(401).send("User already exists");
+      return;
+    }
 
     const saltRound = 10;
     const salt = await bcrypt.genSalt(saltRound);
     const cryptedPassword = await bcrypt.hash(password, salt);
 
-    client.query("INSERT INTO users(user_name, user_email, user_password) values($1, $2, $3)", [name, email, cryptedPassword] )
-
-  } catch (error) {}
+    client.query(
+      "INSERT INTO users(user_name, user_email, user_password) values($1, $2, $3)",
+      [name, email, cryptedPassword]
+    );
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 module.exports = router;
