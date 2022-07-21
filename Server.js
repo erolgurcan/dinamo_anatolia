@@ -10,7 +10,6 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "build")));
 
-
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -19,7 +18,6 @@ const client = new Client({
 });
 
 client.connect();
-
 console.log(process.env.NODE_ENV);
 
 // DB Settings
@@ -28,6 +26,13 @@ app.listen(PORT, () => {
   console.log("Aplication started on port " + PORT);
 
 });
+
+
+//Routes
+
+app.use( "/auth", require("./routes/jsonTokenAuth") );
+
+//Api 
 
 app.get("/get_event", (req, res) => {
     try {
