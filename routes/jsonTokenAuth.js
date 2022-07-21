@@ -8,3 +8,6 @@ router.post("/register", async (req, res) => {
     console.log(email);
   } catch (error) {}
 });
+
+
+module.exports = router;
