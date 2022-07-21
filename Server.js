@@ -7,6 +7,7 @@ const { Client } = require("pg");
 
 app.use(cors());
 app.use(express.json());
+
 app.use(express.static(path.join(__dirname, "build")));
 
 
@@ -18,7 +19,6 @@ const client = new Client({
 });
 
 client.connect();
-
 
 console.log(process.env.NODE_ENV);
 
