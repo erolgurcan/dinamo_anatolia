@@ -17,12 +17,12 @@ router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    const user = client.query(
+    const user = await client.query(
       "select * from users where  user_email = " + "'" + email + "';"
     );
 
     console.log(user);
-    
+
     if (user.rows.length > 0) {
       console.log(user.rows.length);
       res.status(401).send("User already exists");
