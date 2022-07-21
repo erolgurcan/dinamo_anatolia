@@ -21,6 +21,8 @@ router.post("/register", async (req, res) => {
       "select * from users where  user_email = " + "'" + email + "';"
     );
 
+    console.log(user);
+    
     if (user.rows.length > 0) {
       console.log(user.rows.length);
       res.status(401).send("User already exists");
