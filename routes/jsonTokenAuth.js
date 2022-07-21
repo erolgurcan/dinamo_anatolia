@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { Client } = require("pg");
 const bcrypt = require("bcrypt");
+const { default: userEvent } = require("@testing-library/user-event");
+const { response } = require("express");
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -17,16 +19,25 @@ router.post("/register", async (req, res) => {
     console.log(
       "select * from users where  user_email = " + "'" + email + "';"
     );
+
     client.query(
       "select * from users where  user_email = " + "'" + email + "';",
       (err, response) => {
         res.json(response.rows);
       }
     );
+   
+    if (response.rows.length !== 0 ){
+        res.status(401).send("User already exists");
+        return;
+    };
 
-    // client.query("select * from users where  user_email = " + "'" + email + "';" ,  (err, response) => {
-    //     res.json(response.rows);
-    //   });
+    const saltRound = 10;
+    const salt = await bcrypt.genSalt(saltRound);
+    const cryptedPassword = await bcrypt.hash(password, salt);
+
+    client.query("INSERT INTO users(user_name, user_email, user_password) values($1, $2, $3)", [name, email, cryptedPassword] )
+
   } catch (error) {}
 });
 
