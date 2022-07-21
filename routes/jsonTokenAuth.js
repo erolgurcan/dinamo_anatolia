@@ -23,7 +23,7 @@ router.post("/register", async (req, res) => {
     client.query(
       "select * from users where  user_email = " + "'" + email + "';",
       (err, response) => {
-        res.json(response.rows);
+       console.log(response.rows);
       }
     );
    
