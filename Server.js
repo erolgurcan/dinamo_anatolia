@@ -4,23 +4,11 @@ const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 const path = require("path");
 const { Client } = require("pg");
+
 app.use(cors());
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, "build")));
 
-if ( process.env.NODE_ENV === "production" ) {
-
-  const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
-  
-
-
-}
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -31,15 +19,6 @@ const client = new Client({
 
 client.connect();
 
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
-
-// client.connect();
- 
 
 console.log(process.env.NODE_ENV);
 
@@ -49,16 +28,6 @@ app.listen(PORT, () => {
   console.log("Aplication started on port " + PORT);
 
 });
-
-// app.get("/test", (req, res) => {
-//   try {
-//     client.query("select * from test", (err, response) => {
-//       res.json(response.rows);
-//     });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
 
 app.get("/get_event", (req, res) => {
     try {

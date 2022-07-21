@@ -39,7 +39,6 @@ const Team = () => {
     const jsonData = await response.json();
     setSchedule(jsonData);
     console.log(jsonData);
-    setSchedule(true);
     console.log(standing);
   };
 

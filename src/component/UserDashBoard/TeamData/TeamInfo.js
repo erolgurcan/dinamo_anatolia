@@ -5,7 +5,7 @@ console.log(data);
 let total_score = 0;
 
 data.forEach(element => {
-    total_score +=  parseInt(element.dinamo_score) ;
+    total_score +=  parseInt(element.team_score) ;
 });
 
 console.log(total_score);

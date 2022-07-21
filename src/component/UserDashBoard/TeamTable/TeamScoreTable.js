@@ -23,7 +23,7 @@ const TeamScoreTable = ({ score }) => {
             >
               <td> {   new Date(st.event_date).toDateString() }</td>
               <td> {"Dinamo Anatolia" }</td>
-              <td> <strong> {st.dinamo_score + "-" + st.opponent_score} </strong>  </td>
+              <td> <strong> {st.team_score + "-" + st.opponent_score} </strong>  </td>
               <td>  { st.opponent_name} </td>
               <td> {st.scored_by}</td>
             </tr>

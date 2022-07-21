@@ -10,7 +10,7 @@ const TeamScoreTable = () => {
 
   const getPlayer = async () => {
     const response = await fetch(
-      "https://dinamo-anatolia.herokuapp.com/score_table"
+      "https://team-anatolia.herokuapp.com/score_table"
     );
     const jsonData = await response.json();
     setScore(jsonData);
@@ -40,7 +40,7 @@ const TeamScoreTable = () => {
               <Card className="text-center w-75 m-auto">
                 <Card.Header>
                   {" "}
-                  <strong>Dinamo </strong> vs.{" "}
+                  <strong>Dinamo Anatolia </strong> vs.{" "}
                   <strong>{" " + s.opponent_name}</strong>{" "}
 
                   <h6> { new Date(s.event_date).toDateString()  } </h6> 
@@ -50,16 +50,16 @@ const TeamScoreTable = () => {
                     {" "}
                     <h1>
                       {" "}
-                      {s.dinamo_score} {" - "} {s.opponent_score}{" "}
+                      {s.team_score} {" - "} {s.opponent_score}{" "}
                     </h1>{" "}
                   </Card.Title>
                   <Card.Text>
                     <h2>
                       {" "}
-                      {s.dinamo_score > s.opponent_score ? (
+                      {s.team_score > s.opponent_score ? (
                         <>Win</>
                       ) : (
-                          <> { s.dinamo_score < s.opponent_score ? "Lost" : "Draw" }  </>
+                          <> { s.team_score < s.opponent_score ? "Lost" : "Draw" }  </>
                       )}{" "}
                     </h2>
 

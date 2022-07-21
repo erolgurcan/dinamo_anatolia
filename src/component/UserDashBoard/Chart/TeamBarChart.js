@@ -20,7 +20,7 @@ const TeamBarChart = ( {score} ) => {
       score.forEach(element => {
 
             let date = new Date(element.event_date).toDateString();
-            let score = parseInt(element.dinamo_score);
+            let score = parseInt(element.team_score);
 
             data.push( {date, score} )
 
