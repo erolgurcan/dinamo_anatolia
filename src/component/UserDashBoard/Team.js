@@ -164,9 +164,12 @@ const Team = () => {
                 </div>
               </div>
             </div>
-            <div className="row" >
-              <div className="col-xl-6" >
-                <div className="card shadow mb-4" style= {{height: 600+ 'px' }} >
+            <div className="row">
+              <div className="col-xl-6">
+                <div
+                  className="card shadow mb-4"
+                  style={{ height: 600 + "px" }}
+                >
                   <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 className="m-0 font-weight-bold text-primary">
                       Score Table
@@ -180,17 +183,18 @@ const Team = () => {
                 </div>
               </div>
               <div className="col-xl-6 col-lg-8 ">
-              <div className="card shadow mb-4" style= {{height: 600+ 'px' }} >
+                <div
+                  className="card shadow mb-4"
+                  style={{ height: 600 + "px" }}
+                >
                   <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 className="m-0 font-weight-bold text-primary">
-                    Schedule
+                      Schedule
                     </h6>
                   </div>
                   <div className="card-body">
                     <div className="chart-area">
-
-                      <TeamSchedule schedule = {schedule}></TeamSchedule>
-
+                      <TeamSchedule schedule={schedule}></TeamSchedule>
                     </div>
                   </div>
                 </div>
