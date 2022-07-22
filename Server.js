@@ -31,7 +31,6 @@ app.listen(PORT, () => {
 //Routes
 
 app.use( "/auth", require("./routes/jsonTokenAuth") );
-app.use("/userPage", request)
 
 //Api 
 
