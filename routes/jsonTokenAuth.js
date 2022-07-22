@@ -50,12 +50,11 @@ router.post("/register", validInfo, async (req, res) => {
 router.post("/login", validInfo, async (req, res) => {
   const { email, password } = req.body;
 
-  const user = client.query("SELECT * FROM users WHERE user_email = $1", [
+  const user = await client.query("SELECT * FROM users WHERE user_email = $1", [
     email,
   ]);
 
   console.log(user);
-
 
   if (user.rows.length === 0) {
     res.status(401).send("Password or email incorrect");
