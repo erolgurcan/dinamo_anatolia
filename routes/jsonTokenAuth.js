@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const { default: userEvent } = require("@testing-library/user-event");
 const { response } = require("express");
 const jTokenGenerator = require("../utils/jTokenGenerator");
+const validInfo = require("../middleware/validInfo")
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -14,7 +15,7 @@ const client = new Client({
 
 client.connect();
 
-router.post("/register", async (req, res) => {
+router.post("/register", validInfo, async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
