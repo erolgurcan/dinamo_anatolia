@@ -49,7 +49,13 @@ router.post("/register", validInfo, async (req, res) => {
 });
 
 router.post("/is-auth", authorization, async (req, res) => {
-  res.json(true);
+
+    try {
+        res.json(true);
+    } catch (error) {
+        console.log(error.message);
+    }
+
 });
 
 router.post("/login", validInfo, async (req, res) => {
