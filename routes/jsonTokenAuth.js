@@ -49,39 +49,40 @@ router.post("/register", validInfo, async (req, res) => {
 });
 
 router.post("/is-auth", authorization, async (req, res) => {
-
-    try {
-        res.json(true);
-    } catch (error) {
-        console.log(error.message);
-    }
-
+  try {
+    res.json(true);
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 router.post("/login", validInfo, async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const user = await client.query("SELECT * FROM users WHERE user_email = $1", [
-    email,
-  ]);
+    const user = await client.query(
+      "SELECT * FROM users WHERE user_email = $1",
+      [email]
+    );
 
-  console.log(user);
+    if (user.rows.length === 0) {
+      res.status(401).send("Password or email incorrect");
+    }
 
-  if (user.rows.length === 0) {
-    res.status(401).send("Password or email incorrect");
+    const validPassword = await bcrypt.compare(
+      password,
+      user.rows[0].user_password
+    );
+
+    if (!validPassword) {
+      res.status(401).json("Password or email incorrect");
+    }
+
+    const token = jTokenGenerator(user.rows[0].user_id);
+    res.json({ token });
+  } catch (error) {
+    console.log(error.message);
   }
-
-  const validPassword = await bcrypt.compare(
-    password,
-    user.rows[0].user_password
-  );
-
-  if (!validPassword) {
-    res.status(401).json("Password or email incorrect");
-  }
-
-  const token = jTokenGenerator(user.rows[0].user_id);
-  res.json({ token });
 });
 
 module.exports = router;
