@@ -54,6 +54,9 @@ router.post("/login", validInfo, async (req, res) => {
     email,
   ]);
 
+  console.log(user);
+
+
   if (user.rows.length === 0) {
     res.status(401).send("Password or email incorrect");
   }
