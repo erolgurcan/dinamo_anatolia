@@ -3,6 +3,7 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const { default: userEvent } = require("@testing-library/user-event");
 const { response } = require("express");
+const jTokenGenerator = require("../utils/jTokenGenerator");
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -33,10 +34,14 @@ router.post("/register", async (req, res) => {
     const salt = await bcrypt.genSalt(saltRound);
     const cryptedPassword = await bcrypt.hash(password, salt);
 
-    client.query(
-      "INSERT INTO users(user_name, user_email, user_password) values($1, $2, $3)",
+    const newUser = await client.query(
+      "INSERT INTO users(user_name, user_email, user_password) values($1, $2, $3) returning *",
       [name, email, cryptedPassword]
     );
+
+    const token = jTokenGenerator(newUser.rows[0].user_id)
+    res.json({token});
+
   } catch (error) {
     console.log(error.message);
   }
