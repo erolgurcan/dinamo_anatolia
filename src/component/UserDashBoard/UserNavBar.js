@@ -32,37 +32,28 @@ const UserNavBar = () => {
 
         <hr className="sidebar-divider my-0" />
 
-        <li className="nav-item active">
+        <div className="nav-item active">
           <Link className="nav-link" to="/">
             <FontAwesomeIcon icon={faHouse} />
             {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
             <span> Main Page</span>
           </Link>
-        </li>
-
-        <li className="nav-item active">
-          <Link className="nav-link" to="/user-router/user-home">
-            <FontAwesomeIcon icon={faGaugeHigh} />
-            {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
-            <span> Dashboard</span>
-          </Link>
-        </li>
+        </div>
 
         <hr className="sidebar-divider" />
-
         <div className="sidebar-heading">Interface</div>
 
-        <li className="nav-item active">
+        <div className="nav-item collapse">
           <Link className="nav-link" to="/user-router/user-home">
             <FontAwesomeIcon icon={faUser} />
             {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
             <span> Dashboard</span>
           </Link>
-        </li>
+        </div>
 
         <hr className="sidebar-divider" />
 
-        <li
+        <div
           className="nav-item active"
           onClick={() => {
             {
@@ -89,12 +80,12 @@ const UserNavBar = () => {
               <Link className="collapse-item" to="/user-router/players">
                 Players
               </Link>
-              <Link className="collapse-item" to="/user-router/team_score">
+              {/* <Link className="collapse-item" to="/user-router/team_score">
                 Score Table
-              </Link>
+              </Link> */}
             </div>
           </div>
-        </li>
+        </div>
 
         <hr className="sidebar-divider" />
 

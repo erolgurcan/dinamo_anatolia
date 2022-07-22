@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const navigateTo = () => {
-    navigate("/user-router/user-home", { replace: true });
+    navigate("/user-router/team", { replace: true });
   };
 
   const onSubmitHandler = async (e) => {
