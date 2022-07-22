@@ -12,11 +12,6 @@ const Login = () => {
     navigate("/user-router/user-home", { replace: true });
   };
 
-  const loginSubmit = async => {
-
-    const response = await fetch()
-  }
-
   const onSubmitHandler = (e) => {
     const email = document.getElementById("emailLogin").value;
     const password = document.getElementById("passwordLogin").value;
