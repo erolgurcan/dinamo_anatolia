@@ -5,6 +5,7 @@ const { default: userEvent } = require("@testing-library/user-event");
 const { response } = require("express");
 const jTokenGenerator = require("../utils/jTokenGenerator");
 const validInfo = require("../middleware/validInfo");
+const authorization = require("../middleware/authorization");
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -47,6 +48,10 @@ router.post("/register", validInfo, async (req, res) => {
   }
 });
 
+router.post("/is-auth", authorization, async (req, res) => {
+  res.json(true);
+});
+
 router.post("/login", validInfo, async (req, res) => {
   const { email, password } = req.body;
 
@@ -60,16 +65,17 @@ router.post("/login", validInfo, async (req, res) => {
     res.status(401).send("Password or email incorrect");
   }
 
-  const validPassword = await bcrypt.compare( password, user.rows[0].user_password );
+  const validPassword = await bcrypt.compare(
+    password,
+    user.rows[0].user_password
+  );
 
-  if (!validPassword){
-
+  if (!validPassword) {
     res.status(401).json("Password or email incorrect");
   }
 
   const token = jTokenGenerator(user.rows[0].user_id);
-  res.json({token});
-
+  res.json({ token });
 });
 
 module.exports = router;
