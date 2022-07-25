@@ -14,14 +14,15 @@ import {
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 
-const UserNavBar = (  {setIsAuth} ) => {
+const UserNavBar = ({ setIsAuth, user, userStatus }) => {
   const [teamShow, setTeamShow] = useState(false);
-  
-  const logout  = (e) => {
+  console.log(userStatus );
+
+  const logout = (e) => {
     e.preventDefault();
     setIsAuth(false);
     localStorage.removeItem("token");
-  }
+  };
 
   return (
     <>
@@ -29,13 +30,11 @@ const UserNavBar = (  {setIsAuth} ) => {
         className="navbar-nav bg-gradient-secondary sidebar sidebar-dark"
         id="accordionSidebar"
       >
-        <a
-          className="sidebar-brand d-flex align-items-center justify-content-center"
-        > 
+        <a className="sidebar-brand d-flex align-items-center justify-content-center">
           <div className="sidebar-brand-icon rotate-n-15">
             <FontAwesomeIcon icon={faSmile} />
           </div>
-          <div className="sidebar-brand-text mx-3">User Board</div>
+          <div className="sidebar-brand-text mx-3">{user} </div>
         </a>
 
         <div className="nav-item active">
@@ -92,15 +91,17 @@ const UserNavBar = (  {setIsAuth} ) => {
 
         <hr className="sidebar-divider" />
 
-        <div className="nav-item active">
-          <Link className="nav-link" to="/user-router/team">
-            <FontAwesomeIcon icon={faFolderPlus} />
-            <i className="fas fa-fw fa-cog"></i>
-            <span>Admin Page</span>
-          </Link>
-        </div>
-              <Button  onClick = { e=> logout(e) } > Log Out </Button>
+        {userStatus === "admin" && (
+          <div className="nav-item active">
+            <Link className="nav-link" to="/user-router/admin">
+              <FontAwesomeIcon icon={faFolderPlus} />
+              <i className="fas fa-fw fa-cog"></i>
+              <span>Admin Page</span>
+            </Link>
+          </div>
+        )}
 
+        <Button onClick={(e) => logout(e)}> Log Out </Button>
       </div>
     </>
   );
