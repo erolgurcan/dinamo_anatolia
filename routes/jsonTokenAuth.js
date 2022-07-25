@@ -19,7 +19,7 @@ client.connect();
 router.post("/get-user", authorization, async(req,res) => {
 
   try {
-    
+    console.log(req.user);
     const user = await client.query("SELECT * FROM users WHERE user_id = $1", [req.user.id]);
     res.json(user.rows[0]);
   } catch (error) {
