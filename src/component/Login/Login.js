@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Login.css";
 import UserDashBoard from "../UserDashBoard/UserDashBoard";
 import Navigation from "../Navigation/Navigation";
@@ -48,6 +48,27 @@ const Login = () => {
       console.log(error.message);
     }
   };
+
+  
+  const IsAuth = async () => {
+
+    const result = await fetch( "https://dinamo-anatolia.herokuapp.com/auth/is-auth", {
+      method: "POST",
+      headers: {
+        token: localStorage.token
+      }
+    } );
+
+    const resultParse =  await result.json();
+    setIsAuth(true);
+    navigateTo();   
+  }
+
+
+  useEffect( () => { 
+    IsAuth();
+  } , [] )
+  
 
   return (
     <>

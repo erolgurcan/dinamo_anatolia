@@ -7,7 +7,6 @@ import Navigation from "./component/Navigation/Navigation";
 function App() {
   return (
     <>
-      {" "}
       <Navigation />
       <LandingPage />
     </>

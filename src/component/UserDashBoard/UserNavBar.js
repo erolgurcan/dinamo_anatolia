@@ -7,17 +7,25 @@ import {
   faFutbol,
   faGaugeHigh,
   faHouse,
+  faLongArrowAltUp,
   faSmile,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/esm/Button";
 
-const UserNavBar = () => {
+const UserNavBar = (  {setIsAuth} ) => {
   const [teamShow, setTeamShow] = useState(false);
+  
+  const logout  = (e) => {
+    e.preventDefault();
+    setIsAuth(false);
+    localStorage.removeItem("token");
+  }
 
   return (
     <>
-      <ul
+      <div
         className="navbar-nav bg-gradient-secondary sidebar sidebar-dark"
         id="accordionSidebar"
       >
@@ -30,8 +38,6 @@ const UserNavBar = () => {
           <div className="sidebar-brand-text mx-3">User Board</div>
         </a>
 
-        <hr className="sidebar-divider my-0" />
-
         <div className="nav-item active">
           <Link className="nav-link" to="/">
             <FontAwesomeIcon icon={faHouse} />
@@ -39,9 +45,6 @@ const UserNavBar = () => {
             <span> Main Page</span>
           </Link>
         </div>
-
-        <hr className="sidebar-divider" />
-        <div className="sidebar-heading">Interface</div>
 
         <div className="nav-item collapse">
           <Link className="nav-link" to="/user-router/user-home">
@@ -89,14 +92,16 @@ const UserNavBar = () => {
 
         <hr className="sidebar-divider" />
 
-        <li className="nav-item active">
+        <div className="nav-item active">
           <Link className="nav-link" to="/user-router/team">
             <FontAwesomeIcon icon={faFolderPlus} />
             <i className="fas fa-fw fa-cog"></i>
             <span>Admin Page</span>
           </Link>
-        </li>
-      </ul>
+        </div>
+              <Button  onClick = { e=> logout(e) } > Log Out </Button>
+
+      </div>
     </>
   );
 };
