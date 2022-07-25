@@ -16,6 +16,18 @@ const client = new Client({
 
 client.connect();
 
+router.post("/getuser", authorization, async(req,res) => {
+
+  try {
+    
+    const user = await client.query("SELECT * FROM users, WHERE user_id = $1", [req.user.id]);
+    res.json(user.rows[0]);
+  } catch (error) {
+    console.log(error.message);
+  }
+
+} )
+
 router.post("/register", validInfo, async (req, res) => {
   try {
     const { name, email, password } = req.body;
