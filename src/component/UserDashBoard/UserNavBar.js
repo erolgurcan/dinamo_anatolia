@@ -16,7 +16,8 @@ import Button from "react-bootstrap/esm/Button";
 
 const UserNavBar = ({ setIsAuth, user, userStatus }) => {
   const [teamShow, setTeamShow] = useState(false);
-  console.log(userStatus );
+  const [adminShow, setAdminShow] = useState(false);
+   console.log(userStatus );
 
   const logout = (e) => {
     e.preventDefault();
@@ -82,9 +83,6 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
               <Link className="collapse-item" to="/user-router/players">
                 Players
               </Link>
-              {/* <Link className="collapse-item" to="/user-router/team_score">
-                Score Table
-              </Link> */}
             </div>
           </div>
         </div>
@@ -92,12 +90,27 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
         <hr className="sidebar-divider" />
 
         {userStatus === "admin" && (
-          <div className="nav-item active">
-            <Link className="nav-link" to="/user-router/admin">
-              <FontAwesomeIcon icon={faFolderPlus} />
-              <i className="fas fa-fw fa-cog"></i>
-              <span>Admin Page</span>
-            </Link>
+          <div className="nav-item active" onClick = {  () => {
+            !adminShow? setAdminShow(true): setAdminShow(false)
+          }  } >
+          <div className="nav-link ">
+            <FontAwesomeIcon icon={faFolderPlus} />
+            <span>Admin Page</span>
+          </div>
+          <div
+            id="collapseTwo"
+            className={adminShow ? "collapse show" : "collapse"}
+          >
+            <div className="bg-white py-2 collapse-inner rounded">
+              <Link className="collapse-item" to="/user-router/add-user">
+                Add User
+              </Link>
+              <Link className="collapse-item" to="/user-router/team-calender">
+                Add Player
+              </Link>
+            </div>
+          </div>
+
           </div>
         )}
 

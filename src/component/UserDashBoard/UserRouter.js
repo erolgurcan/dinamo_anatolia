@@ -7,6 +7,7 @@ import Team from "./Team";
 import TeamPlayers from "./TeamPlayers";
 import TeamScoreTable from "./TeamScoreTable";
 import Admin from "./Admin";
+import AddUser from "./AddUser";
 
 const UserRouter = () => {
   const [isAuth, setIsAuth] = useState(true);
@@ -81,6 +82,9 @@ const UserRouter = () => {
                 <Route path="team_score" element={<TeamScoreTable />} />
                 {userStatus === "admin" && (
                   <Route path="admin" element={<Admin />} />
+                )}
+                {userStatus === "admin" && (
+                  <Route path="add-user" element={<AddUser />} />
                 )}
               </Routes>
             </div>
