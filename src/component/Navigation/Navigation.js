@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../LandingPage/LandingPage.css"
-
+import "../LandingPage/LandingPage.css";
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 const Navigation = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+
+
+
+      <nav className="navbar navbar-expand navbar-dark navbar-custom fixed-top">
         <div className="container px-5">
-          <a className="navbar-brand" href="#page-top">
+          <a className="navbar-brand">
           <img
                 className="img-fluid mb-4 flag"
                 src={require("../../images/flag.png")}
@@ -19,7 +22,9 @@ const Navigation = () => {
             className="navbar-toggler"
             type="button"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon">
+
+            </span>
           </button>
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav ms-auto">
@@ -32,7 +37,7 @@ const Navigation = () => {
             </ul>
           </div>
         </div>
-      </nav>
+      </nav> 
     </>
   );
 };
