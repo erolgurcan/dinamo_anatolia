@@ -21,6 +21,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import Login from "./component/Login/Login";
 import UserRouter from "./component/UserDashBoard/UserRouter";
+import Register from "./component/Register/Register"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -29,6 +30,7 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="login" element={<Login />} />
       <Route path = "user-router/*" element = {  <UserRouter/> }></Route>
+      <Route path = "register" element = {  <Register/> }></Route>
     </Routes>
   </BrowserRouter>
 );

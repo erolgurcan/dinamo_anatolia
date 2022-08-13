@@ -64,7 +64,7 @@ fetchUser()
                   user? user: "Login"
                 }
               </Link>
-              <Link className="navBar-Item" to="/login">
+              <Link className="navBar-Item" to="/register">
                 <img
                   className="nav-img"
                   src={require("../../images/verify.png")}
