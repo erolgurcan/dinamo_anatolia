@@ -49,30 +49,29 @@ const Login = () => {
     }
   };
 
-  
   const IsAuth = async () => {
-
-    const result = await fetch( "https://dinamo-anatolia.herokuapp.com/auth/is-auth", {
-      method: "POST",
-      headers: {
-        token: localStorage.token
+    const result = await fetch(
+      "https://dinamo-anatolia.herokuapp.com/auth/is-auth",
+      {
+        method: "POST",
+        headers: {
+          token: localStorage.token,
+        },
       }
-    } );
+    );
 
-    const resultParse =  await result.json();
+    const resultParse = await result.json();
     setIsAuth(true);
-    navigateTo();   
-  }
+    navigateTo();
+  };
 
-
-  useEffect( () => { 
+  useEffect(() => {
     IsAuth();
-  } , [] )
-  
+  }, []);
 
   return (
     <>
-      <Navigation/>
+      <Navigation />
       <section className="vh-100 login-background">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -128,10 +127,13 @@ const Login = () => {
                         >
                           Login
                         </button>
-
-                        
                       </div>
-                      { !isAuth&&  <h6 className="font-weight-bold" > Invalid Password or Email </h6> }
+                      {!isAuth && (
+                        <h6 className="font-weight-bold">
+                          {" "}
+                          Invalid Password or Email{" "}
+                        </h6>
+                      )}
                       <div className="d-flex flex-column">
                         <h6>Do you want to join us?</h6>
                         <h6>Fill out your form here</h6>
