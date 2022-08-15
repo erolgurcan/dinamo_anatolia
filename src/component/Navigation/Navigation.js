@@ -36,7 +36,9 @@ fetchUser()
     <>
       <nav className="navBar">
         <div className="navBar-subFrame">
+        
           <div className="navBar-subFrame-leftDiv">
+
             <Link className="" to="/">
               <img
                 className="nav-img"
@@ -44,6 +46,7 @@ fetchUser()
                 alt="..."
               />
             </Link>
+
           </div>
           <div className="navBar-subFrame-rightDiv">
             <div>
@@ -72,6 +75,7 @@ fetchUser()
                 />
                 Register
               </Link>
+
             </div>
           </div>
         </div>

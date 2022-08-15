@@ -39,7 +39,7 @@ const LandingPage = () => {
                 <p>
                   Dinamo Anatolia FC has been established by a group of football
                   enthusiasts who shared the common cultural heredity of
-                  <strong>Anatolia (Asia Minor)</strong> living in Vancouver, BC on Feb 25, 2020.
+                  <strong> Anatolia (Asia Minor)</strong> living in Vancouver, BC on Feb 25, 2020.
                   The club is built on and around the inclusive culture of
                   Anatolia. <strong>Dinamo</strong> in the club name represents youthfulness,
                   energy and active individuals
