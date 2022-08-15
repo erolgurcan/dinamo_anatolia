@@ -7,62 +7,56 @@ import {
   faFutbol,
   faGaugeHigh,
   faHouse,
+  faLongArrowAltUp,
   faSmile,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/esm/Button";
 
-const UserNavBar = () => {
+const UserNavBar = ({ setIsAuth, user, userStatus }) => {
   const [teamShow, setTeamShow] = useState(false);
+  const [adminShow, setAdminShow] = useState(false);
+   console.log(userStatus );
+
+  const logout = (e) => {
+    e.preventDefault();
+    setIsAuth(false);
+    localStorage.removeItem("token");
+  };
 
   return (
     <>
-      <ul
+      <div
         className="navbar-nav bg-gradient-secondary sidebar sidebar-dark"
         id="accordionSidebar"
       >
-        <a
-          className="sidebar-brand d-flex align-items-center justify-content-center"
-        > 
+        <a className="sidebar-brand d-flex align-items-center justify-content-center">
           <div className="sidebar-brand-icon rotate-n-15">
             <FontAwesomeIcon icon={faSmile} />
           </div>
-          <div className="sidebar-brand-text mx-3">User Board</div>
+          <div className="sidebar-brand-text mx-3">{user} </div>
         </a>
 
-        <hr className="sidebar-divider my-0" />
-
-        <li className="nav-item active">
+        <div className="nav-item active">
           <Link className="nav-link" to="/">
             <FontAwesomeIcon icon={faHouse} />
             {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
             <span> Main Page</span>
           </Link>
-        </li>
+        </div>
 
-        <li className="nav-item active">
-          <Link className="nav-link" to="/user-router/user-home">
-            <FontAwesomeIcon icon={faGaugeHigh} />
-            {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
-            <span> Dashboard</span>
-          </Link>
-        </li>
-
-        <hr className="sidebar-divider" />
-
-        <div className="sidebar-heading">Interface</div>
-
-        <li className="nav-item active">
+        <div className="nav-item collapse">
           <Link className="nav-link" to="/user-router/user-home">
             <FontAwesomeIcon icon={faUser} />
             {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
             <span> Dashboard</span>
           </Link>
-        </li>
+        </div>
 
         <hr className="sidebar-divider" />
 
-        <li
+        <div
           className="nav-item active"
           onClick={() => {
             {
@@ -94,18 +88,37 @@ const UserNavBar = () => {
               </Link>
             </div>
           </div>
-        </li>
+        </div>
 
         <hr className="sidebar-divider" />
 
-        <li className="nav-item active">
-          <Link className="nav-link" to="/user-router/team">
+        {userStatus === "admin" && (
+          <div className="nav-item active" onClick = {  () => {
+            !adminShow? setAdminShow(true): setAdminShow(false)
+          }  } >
+          <div className="nav-link ">
             <FontAwesomeIcon icon={faFolderPlus} />
-            <i className="fas fa-fw fa-cog"></i>
             <span>Admin Page</span>
-          </Link>
-        </li>
-      </ul>
+          </div>
+          <div
+            id="collapseTwo"
+            className={adminShow ? "collapse show" : "collapse"}
+          >
+            <div className="bg-white py-2 collapse-inner rounded">
+              <Link className="collapse-item" to="/user-router/add-user">
+                Add User
+              </Link>
+              <Link className="collapse-item" to="/user-router/team-calender">
+                Add Player
+              </Link>
+            </div>
+          </div>
+
+          </div>
+        )}
+
+        <Button onClick={(e) => logout(e)}> Log Out </Button>
+      </div>
     </>
   );
 };
