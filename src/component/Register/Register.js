@@ -15,7 +15,7 @@ const Register = () => {
   const [userInfo, setUserInfo] = useState([]);
   const [validInfo, setValidInfo] = useState(true);
 
-  console.log( process.env )
+  console.log( process.env );
 
   const modalShownHandler = () => {
     setModalShow(false);
