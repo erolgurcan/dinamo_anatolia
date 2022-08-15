@@ -27,7 +27,6 @@ const UserRouter = () => {
       );
       const parseResult = await res.json();
       parseResult ? setIsAuth(true) : setIsAuth(false);
-      console.log(parseResult);
     } catch (error) {
       console.log(error.message);
     }
@@ -46,7 +45,6 @@ const UserRouter = () => {
       );
 
       const userParse = await user.json();
-      console.log(userParse);
       setUser(userParse.user_name);
       setUserStatus(userParse.status);
     } catch (error) {
