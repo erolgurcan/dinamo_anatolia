@@ -9,6 +9,9 @@ import RegisterModal from "./RegisterModal";
 import emailjs from "emailjs-com";
 
 const Register = () => {
+
+  console.log( process.env.email )
+
   const form = useRef();
   const [isAuth, setIsAuth] = useState(true);
   const [modalShow, setModalShow] = useState(false);
