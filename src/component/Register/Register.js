@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { Form, FloatingLabel } from "react-bootstrap";
 import RegisterModal from "./RegisterModal";
 import emailjs from "emailjs-com";
+import { env } from "../../../Server";
 
 const Register = () => {
 
-  console.log(process.env.emailTemplateID2);
+  console.log(env);
 
   const form = useRef();
   const [isAuth, setIsAuth] = useState(true);
