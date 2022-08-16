@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, FloatingLabel } from "react-bootstrap";
 import RegisterModal from "./RegisterModal";
 import emailjs from "emailjs-com";
-import { env } from "../../../Server";
+import { env } from "../UserDashBoard/TeamData/TeamInfo";
 
 const Register = () => {
 

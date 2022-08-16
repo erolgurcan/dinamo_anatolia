@@ -25,6 +25,13 @@ export const ConceededGoal = ( {data} ) => {
     return conceededGoal;
 }
 
+export const env = (  ) => {
+
+    const test = require("dotenv").config();
+    
+    return test;
+  }
+
 export const Standing = ( { data }) => {
 
 
