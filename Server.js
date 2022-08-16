@@ -11,12 +11,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "build")));
 
 
-export const env = (  ) => {
 
-  const test = require("dotenv").config();
-  
-  return test;
-}
 
 
 try {
