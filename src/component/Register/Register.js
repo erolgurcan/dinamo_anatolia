@@ -10,7 +10,7 @@ import emailjs from "emailjs-com";
 
 const Register = () => {
 
-  console.log(env);
+  console.log(process.env);
 
   const form = useRef();
   const [isAuth, setIsAuth] = useState(true);
