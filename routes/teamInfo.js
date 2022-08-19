@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const authorization = require("../middleware/authorization");
 const connectionString = require("../db");
-
+const { Client } = require("pg");
 
 // const client = new Client({
 //   connectionString: process.env.DATABASE_URL,
@@ -17,15 +17,26 @@ const client = new Client({
   },
 });
 
-client.connect()
+client.connect();
 
-router.get("/", authorization, async (req, res) => {
+router.get("/standingTable", authorization, async (req, res) => {
   try {
+    const { league } = req.body;
     const user = await client.query(
-      "SELECT user_name FROM users WHERE user_id = $1",
-      [req.user]
+      "select * from standing_table where league = " + "'" + league + "'"
     );
-    res.json(user.rows[0]);
+    res.json(user.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+router.get("/leagues", authorization, async (req, res) => {
+  try {
+    const result = await client.query(
+      "select distinct(league) from standing_table "
+    );
+    res.json(result.rows);
   } catch (error) {
     console.log(error.message);
   }
