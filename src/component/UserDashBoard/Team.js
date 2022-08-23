@@ -24,7 +24,7 @@ const Team = () => {
 
   const getLeague = async () => {
     const response = await fetch(
-      "http://localhost:5000/teamInfo/leagues",
+       url + "http://localhost:5000/teamInfo/leagues",
 
       {
         method: "GET",
