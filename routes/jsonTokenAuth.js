@@ -22,6 +22,8 @@ const client = new Client({
   },
 });
 
+
+
 client.connect();
 
 router.post("/get-user", authorization, async (req, res) => {
