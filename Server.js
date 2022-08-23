@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, "build")));
   client.connect();
 
 console.log(process.env);
+console.log( connectionString )
 
 // DB Settings
 
