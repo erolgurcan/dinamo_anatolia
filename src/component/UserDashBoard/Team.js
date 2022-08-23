@@ -24,7 +24,7 @@ const Team = () => {
 
   const getLeague = async () => {
     const response = await fetch(
-       url + "teamInfo/leagues",
+      "https://dinamo-anatolia.herokuapp.com/teamInfo/leagues",
 
       {
         method: "GET",
