@@ -6,15 +6,25 @@ const { response } = require("express");
 const jTokenGenerator = require("../utils/jTokenGenerator");
 const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
+const connectionString = require("../db");
+
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
+  connectionString:connectionString ,
   ssl: {
     rejectUnauthorized: false,
   },
 });
 
+
 client.connect();
+
 
 router.post("/get-user", authorization, async(req,res) => {
 

@@ -61,8 +61,8 @@ const UserRouter = () => {
     <>
       {isAuth ? (
         <>
-          <div className="d-flex">
-            <div className="w-10">
+          <div className="d-flex flex-lg-column">
+            <div className="col-lg-12 mb-4">
               <UserNavBar
                 setIsAuth={setIsAuth}
                 userStatus={userStatus}
@@ -70,7 +70,7 @@ const UserRouter = () => {
               ></UserNavBar>
             </div>
 
-            <div className="w-100">
+            <div className="col-lg-12">
               {" "}
               <Routes>
                 <Route path="team-calender" element={<TeamCalender />} />

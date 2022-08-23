@@ -9,6 +9,9 @@ import RegisterModal from "./RegisterModal";
 import emailjs from "emailjs-com";
 
 const Register = () => {
+
+  console.log(process.env);
+
   const form = useRef();
   const [isAuth, setIsAuth] = useState(true);
   const [modalShow, setModalShow] = useState(false);
@@ -45,14 +48,14 @@ const Register = () => {
 
     
 
-    emailjs.sendForm(process.env.emailServiceID, process.env.emailTemplateID1 ,form.current ,process.env.emailUserID)
+    emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMP_ID1 ,form.current ,process.env.REACT_APP_USER_ID)
     .then((result) => {
         console.log(result.text);
     }, (error) => {
         console.log(error.text);
     });
 
-    emailjs.sendForm(process.env.emailServiceID, process.env.emailTemplateID2 ,form.current ,process.env.emailUserID)
+    emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMP_ID2 ,form.current ,process.env.REACT_APP_USER_ID)
     .then((result) => {
         console.log(result.text);
     }, (error) => {

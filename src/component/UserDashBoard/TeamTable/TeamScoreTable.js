@@ -4,7 +4,7 @@ import { Table } from "react-bootstrap";
 const TeamScoreTable = ({ score }) => {
   return (
     <>
-      <Table striped bordered hover size="sm">
+      <Table striped bordered hover size="sm" className="table-responsive-sm min-vh-75 overflow-hidden" >
         <thead>
           <tr>
             <th> Match Date </th>

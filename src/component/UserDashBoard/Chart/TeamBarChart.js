@@ -1,37 +1,27 @@
 import React from "react";
 import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    Tooltip,
-    Legend,
-    CartesianGrid,
-  } from "recharts";
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  CartesianGrid
+} from "recharts";
 
+const TeamBarChart = ({ score }) => {
+  const data = [];
 
+  score.forEach((element) => {
+    let date = new Date(element.event_date).toDateString();
+    let score = parseInt(element.team_score);
 
-const TeamBarChart = ( {score} ) => {
-  
-    const data = [
+    data.push({ date, score });
+  });
 
-      ];
-
-      score.forEach(element => {
-
-            let date = new Date(element.event_date).toDateString();
-            let score = parseInt(element.team_score);
-
-            data.push( {date, score} )
-
-      });
-
-      console.log(data);
-  
-    return (
-    <div>
-      {" "}
-      <BarChart width={1300} height={300} data={data}>
+  return (
+    <>
+      <BarChart width={600} height={500} data={data} className="m-auto">
         <XAxis dataKey="date" stroke="#8884d8" />
         <YAxis />
         <Tooltip wrapperStyle={{ width: 100, backgroundColor: "#ccc" }} />
@@ -47,9 +37,9 @@ const TeamBarChart = ( {score} ) => {
           }}
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <Bar dataKey="score" fill="#0d6efd" barSize={30}  />
+        <Bar dataKey="score" fill="#0d6efd" barSize={30} />
       </BarChart>
-    </div>
+    </>
   );
 };
 
