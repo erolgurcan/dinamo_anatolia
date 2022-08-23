@@ -4,22 +4,23 @@ const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 const path = require("path");
 const { Client } = require("pg");
-const connectionString = require("./db");
+const connectionString = require("./db") || process.env.DATABASE_URL ;
 
 app.use(cors());
 app.use(express.json());
+
 app.use(express.static(path.join(__dirname, "build")));
 
-  const client = new Client({
-    connectionString: connectionString,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
-  client.connect();
+const client = new Client({
+  connectionString: connectionString,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
-console.log(process.env);
-console.log( connectionString )
+client.connect();
+console.log(process.env.NODE_ENV);
+console.log(connectionString);
 
 // DB Settings
 
@@ -29,8 +30,8 @@ app.listen(PORT, () => {
 
 //Routes
 
-app.use( "/auth", require("./routes/jsonTokenAuth") );
-app.use( "/teamInfo", require("./routes/teamInfo") );
+app.use("/auth", require("./routes/jsonTokenAuth"));
+app.use("/teamInfo", require("./routes/teamInfo"))
 
 //Api
 
