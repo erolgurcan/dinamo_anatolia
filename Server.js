@@ -4,7 +4,7 @@ const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 const path = require("path");
 const { Client } = require("pg");
-const connectionString = require("./db") || process.env.DATABASE_URL ;
+const connectionString =  process.env.DATABASE_URL 
 
 app.use(cors());
 app.use(express.json());
@@ -20,7 +20,7 @@ const client = new Client({
 
 client.connect();
 console.log(process.env.NODE_ENV);
-console.log(connectionString);
+console.log( process.env.DATABASE_URL);
 
 // DB Settings
 

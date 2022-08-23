@@ -6,7 +6,7 @@ const { response } = require("express");
 const jTokenGenerator = require("../utils/jTokenGenerator");
 const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
-const connectionString = require("../db") || process.env.DATABASE_URL;
+const connectionString = process.env.DATABASE_URL;
 
 // const client = new Client({
 //   connectionString: process.env.DATABASE_URL,
