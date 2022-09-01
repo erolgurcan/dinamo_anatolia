@@ -14,7 +14,7 @@ const TeamSchedule = ({ schedule }) => {
           </tr>
         </thead>
         <tbody>
-          {schedule.filter( schedule =>   new Date(schedule.event_date2).valueOf()  > new Date().valueOf() ).map((s) => (
+          {schedule?.filter( schedule =>   new Date(schedule?.event_date2).valueOf()  > new Date().valueOf() ).map((s) => (
             <tr>
               <td> { new Date(s.event_date2).toDateString()  } </td>
               <td> {  new String(s.event_location).toLocaleUpperCase()  } </td>

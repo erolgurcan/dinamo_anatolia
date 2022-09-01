@@ -13,13 +13,9 @@ const TeamCalender = () => {
   const [selectedYear, setSelecterYear] = useState();
   const [nextEvent, setNextEvent] = useState();
 
-  const url =
-    process.env.MODE === "production"
-      ? "https://dinamo-anatolia.herokuapp.com/"
-      : "http://localhost:5000/";
 
   const getSchedule = async () => {
-    const response = await fetch(url + "teamInfo/get_event", {
+    const response = await fetch("https://dinamo-anatolia.herokuapp.com/" + "teamInfo/get_event", {
       method: "GET",
       headers: {
         token: localStorage.token,

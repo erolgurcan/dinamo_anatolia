@@ -12,10 +12,6 @@ const Team = () => {
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(false);
   const [leauge, setLeague] = useState([]);
-  const url =
-    process.env.MODE === "production"
-      ? "https://dinamo-anatolia.herokuapp.com/"
-      : "http://localhost:5000/";
 
   const onChangeHandler = (e) => {
     const league = document.getElementById("league").value;
@@ -24,28 +20,33 @@ const Team = () => {
   };
 
   const getLeague = async () => {
-
-    const response = await fetch("https://dinamo-anatolia.herokuapp.com/" + "teamInfo/leagues", {
-      method: "GET",
-      headers: {
-        token: localStorage.token,
-      },
-    });
+    const response = await fetch(
+      "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/leagues",
+      {
+        method: "GET",
+        headers: {
+          token: localStorage.token,
+        },
+      }
+    );
 
     const jsonData = await response.json();
     setLeague(jsonData);
   };
 
   const getStanding = async () => {
-    const response = await fetch("https://dinamo-anatolia.herokuapp.com/" + "teamInfo/standing", {
-      method: "POST",
-      headers: {
-        token: localStorage.token,
-        league: document.getElementById("league").value
-          ? document.getElementById("league").value
-          : "Vancouver Metro Soccer League",
-      },
-    });
+    const response = await fetch(
+      "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/standing",
+      {
+        method: "POST",
+        headers: {
+          token: localStorage.token,
+          league: document.getElementById("league").value
+            ? document.getElementById("league").value
+            : "Vancouver Metro Soccer League",
+        },
+      }
+    );
     const jsonData = await response.json();
     setStanding(jsonData);
     setLoading(true);
@@ -53,15 +54,18 @@ const Team = () => {
   };
 
   const getScoredTable = async () => {
-    const response = await fetch("https://dinamo-anatolia.herokuapp.com/" + "teamInfo/scored_table", {
-      method: "POST",
-      headers: {
-        token: localStorage.token,
-        league: document.getElementById("league").value
-          ? document.getElementById("league").value
-          : "Vancouver Metro Soccer League",
-      },
-    });
+    const response = await fetch(
+      "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/scored_table",
+      {
+        method: "POST",
+        headers: {
+          token: localStorage.token,
+          league: document.getElementById("league").value
+            ? document.getElementById("league").value
+            : "Vancouver Metro Soccer League",
+        },
+      }
+    );
     const jsonData = await response.json();
     setScore(jsonData);
     setLoading(true);
@@ -69,9 +73,18 @@ const Team = () => {
   };
 
   const getSchedule = async () => {
-    const response = await fetch(url + "get_event");
+    setLoading(true);
+    const response = await fetch(
+      "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/get_event", {
+        method:"GET",
+        headers: {
+          token: localStorage.token,
+        }
+      }
+    );
     const jsonData = await response.json();
     setSchedule(jsonData);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -230,6 +243,7 @@ const Team = () => {
                     Score Table
                   </h6>
                 </div>
+
                 <div
                   className="card-body h-100 overflow-auto"
                   style={{ minHeight: "500px" }}
@@ -252,9 +266,11 @@ const Team = () => {
                   className="card-body h-100 overflow-auto"
                   style={{ minHeight: "500px" }}
                 >
-                  <div className="chart-area">
-                    <TeamSchedule schedule={schedule}></TeamSchedule>
-                  </div>
+
+                    <div className="chart-area">
+                      <TeamSchedule schedule={schedule}></TeamSchedule>
+                    </div>
+
                 </div>
               </div>
             </div>
