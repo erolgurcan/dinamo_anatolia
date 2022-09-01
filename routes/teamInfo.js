@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const authorization = require("../middleware/authorization");
+
 const connectionString =  process.env.MODE ==="production"? process.env.DATABASE_URL:  require("../db");
+
 const { Client } = require("pg");
 
 // const client = new Client({

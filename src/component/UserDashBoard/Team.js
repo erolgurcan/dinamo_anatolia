@@ -24,12 +24,14 @@ const Team = () => {
   };
 
   const getLeague = async () => {
+
     const response = await fetch(url + "teamInfo/leagues", {
       method: "GET",
       headers: {
         token: localStorage.token,
       },
     });
+
     const jsonData = await response.json();
     setLeague(jsonData);
   };

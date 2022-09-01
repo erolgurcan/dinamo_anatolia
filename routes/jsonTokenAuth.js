@@ -6,7 +6,7 @@ const { response } = require("express");
 const jTokenGenerator = require("../utils/jTokenGenerator");
 const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
-const connectionString = require("../db");
+const connectionString = process.env.DATABASE_URL;
 
 // const client = new Client({
 //   connectionString: process.env.DATABASE_URL,
@@ -16,27 +16,27 @@ const connectionString = require("../db");
 // });
 
 const client = new Client({
-  connectionString:connectionString ,
+  connectionString: connectionString,
   ssl: {
     rejectUnauthorized: false,
   },
 });
 
 
+
 client.connect();
 
-
-router.post("/get-user", authorization, async(req,res) => {
-
+router.post("/get-user", authorization, async (req, res) => {
   try {
     console.log(req.user);
-    const user = await client.query("SELECT * FROM users WHERE user_id = $1", [req.user]);
+    const user = await client.query("SELECT * FROM users WHERE user_id = $1", [
+      req.user,
+    ]);
     res.json(user.rows[0]);
   } catch (error) {
     console.log(error.message);
   }
-
-} )
+});
 
 router.post("/register", validInfo, async (req, res) => {
   try {
