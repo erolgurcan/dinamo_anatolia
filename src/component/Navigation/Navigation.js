@@ -9,7 +9,7 @@ const Navigation = () => {
     const url =
       process.env.MODE === "production"
         ? "https://dinamo-anatolia.herokuapp.com/"
-        : "http://localhost:5000/";
+        : "http://localhost:6000/";
 
     if (localStorage.token) {
       console.log("token sent")

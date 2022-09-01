@@ -3,8 +3,6 @@ import { Table } from "react-bootstrap";
 
 const TeamSchedule = ({ schedule }) => {
 
-   
-
   return (
     <>
       <Table striped bordered hover size="sm">

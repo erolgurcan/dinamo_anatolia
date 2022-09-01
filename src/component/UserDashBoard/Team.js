@@ -25,7 +25,7 @@ const Team = () => {
 
   const getLeague = async () => {
 
-    const response = await fetch(url + "teamInfo/leagues", {
+    const response = await fetch("https://dinamo-anatolia.herokuapp.com/" + "teamInfo/leagues", {
       method: "GET",
       headers: {
         token: localStorage.token,
@@ -37,7 +37,7 @@ const Team = () => {
   };
 
   const getStanding = async () => {
-    const response = await fetch(url + "teamInfo/standing", {
+    const response = await fetch("https://dinamo-anatolia.herokuapp.com/" + "teamInfo/standing", {
       method: "POST",
       headers: {
         token: localStorage.token,
@@ -53,7 +53,7 @@ const Team = () => {
   };
 
   const getScoredTable = async () => {
-    const response = await fetch(url + "teamInfo/scored_table", {
+    const response = await fetch("https://dinamo-anatolia.herokuapp.com/" + "teamInfo/scored_table", {
       method: "POST",
       headers: {
         token: localStorage.token,

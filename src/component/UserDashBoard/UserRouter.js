@@ -5,7 +5,6 @@ import TeamCalender from "./TeamCalender";
 import UserNavBar from "./UserNavBar";
 import Team from "./Team";
 import TeamPlayers from "./TeamPlayers";
-import TeamScoreTable from "./TeamScoreTable";
 import Admin from "./Admin";
 import AddUser from "./AddUser";
 import UserInfo from "./UserInfo";
@@ -93,7 +92,6 @@ const UserRouter = () => {
                 <Route path="user-home" element={<UserHome />} />
                 <Route path="team" element={<Team />} />
                 <Route path="players" element={<TeamPlayers />} />
-                <Route path="team_score" element={<TeamScoreTable />} />
                 <Route path="user-profile" element={<UserInfo />} />
                 {userStatus === "admin" && (
                   <Route path="admin" element={<Admin />} />

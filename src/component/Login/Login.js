@@ -5,12 +5,7 @@ import Navigation from "../Navigation/Navigation";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 const Login = () => {
-
-  const url = process.env.MODE === "production"? "https://dinamo-anatolia.herokuapp.com/": "http://localhost:5000/"
 
   const [isAuth, setIsAuth] = useState(true);
 
@@ -22,25 +17,22 @@ const Login = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log("submit");
     const email = document.getElementById("emailLogin").value;
     const password = document.getElementById("passwordLogin").value;
 
     try {
       const body = { email, password };
-      const response = await fetch(
-        url + "auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(body),
-        }
-      );
+      
+      const response = await fetch( "https://dinamo-anatolia.herokuapp.com" + "/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
 
+      console.log(response)
       const parseRes = await response.json();
-
 
       if (parseRes.token) {
         localStorage.setItem("token", parseRes.token);
@@ -56,15 +48,12 @@ const Login = () => {
   };
 
   const IsAuth = async () => {
-    const result = await fetch(
-      url + "auth/is-auth",
-      {
-        method: "POST",
-        headers: {
-          token: localStorage.token,
-        },
-      }
-    );
+    const result = await fetch("https://dinamo-anatolia.herokuapp.com/" + "auth/is-auth", {
+      method: "POST",
+      headers: {
+        token: localStorage.token,
+      },
+    });
 
     const resultParse = await result.json();
     setIsAuth(true);
