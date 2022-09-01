@@ -49,7 +49,6 @@ router.post("/register", validInfo, async (req, res) => {
     console.log(user);
 
     if (user.rows.length > 0) {
-      console.log(user.rows.length);
       res.status(401).send("User already exists");
       return;
     }
@@ -81,7 +80,6 @@ router.post("/is-auth", authorization, async (req, res) => {
 router.post("/login", validInfo, async (req, res) => {
   try {
     const { email, password } = req.body;
-
     const user = await client.query(
       "SELECT * FROM users WHERE user_email = $1",
       [email]
