@@ -12,7 +12,7 @@ const UserInfo = () => {
 
   const getUser = async () => {
     try {
-      const user = await fetch(url + "auth/get-user", {
+      const user = await fetch("https://dinamo-anatolia.herokuapp.com/" + "auth/get-user", {
         method: "POST",
         headers: {
           token: localStorage.token,

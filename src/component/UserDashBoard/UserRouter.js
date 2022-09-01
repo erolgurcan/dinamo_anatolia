@@ -9,30 +9,20 @@ import Admin from "./Admin";
 import AddUser from "./AddUser";
 import UserInfo from "./UserInfo";
 
-
-
 const UserRouter = () => {
-
-  const url =
-    process.env.MODE === "production"
-      ? "https://dinamo-anatolia.herokuapp.com/"
-      : "http://localhost:5000/";
-
   const [isAuth, setIsAuth] = useState(true);
   const [user, setUser] = useState([]);
   const [userStatus, setUserStatus] = useState("user");
 
   const checkAuthenticated = async () => {
-
-    if (!localStorage.getItem("token")){
-      console.log("token not exist")
+    if (!localStorage.getItem("token")) {
+      console.log("token not exist");
       setIsAuth(false);
-      return 
-      
+      return;
     }
     try {
       const res = await fetch(
-        url + "auth/is-auth",
+        "https://dinamo-anatolia.herokuapp.com/" + "auth/is-auth",
         {
           method: "POST",
           headers: {
@@ -49,15 +39,12 @@ const UserRouter = () => {
 
   const getUser = async () => {
     try {
-      const user = await fetch(
-        url + "auth/get-user",
-        {
-          method: "POST",
-          headers: {
-            token: localStorage.token,
-          },
-        }
-      );
+      const user = await fetch("https://dinamo-anatolia.herokuapp.com/" + "auth/get-user", {
+        method: "POST",
+        headers: {
+          token: localStorage.token,
+        },
+      });
 
       const userParse = await user.json();
       setUser(userParse.user_name);

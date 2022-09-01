@@ -6,8 +6,8 @@ import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-
   const [isAuth, setIsAuth] = useState(true);
+  const [isloading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -21,17 +21,20 @@ const Login = () => {
     const password = document.getElementById("passwordLogin").value;
 
     try {
+      setIsLoading(true);
       const body = { email, password };
-      
-      const response = await fetch( "https://dinamo-anatolia.herokuapp.com" + "/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+      const response = await fetch(
+        "https://dinamo-anatolia.herokuapp.com" + "/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
 
-      console.log(response)
+      console.log(response);
       const parseRes = await response.json();
 
       if (parseRes.token) {
@@ -42,18 +45,23 @@ const Login = () => {
         console.log("Not Auth");
         setIsAuth(false);
       }
+
+      setIsLoading(false);
     } catch (error) {
       console.log(error.message);
     }
   };
 
   const IsAuth = async () => {
-    const result = await fetch("https://dinamo-anatolia.herokuapp.com/" + "auth/is-auth", {
-      method: "POST",
-      headers: {
-        token: localStorage.token,
-      },
-    });
+    const result = await fetch(
+      "https://dinamo-anatolia.herokuapp.com/" + "auth/is-auth",
+      {
+        method: "POST",
+        headers: {
+          token: localStorage.token,
+        },
+      }
+    );
 
     const resultParse = await result.json();
     setIsAuth(true);
@@ -67,6 +75,7 @@ const Login = () => {
   return (
     <>
       <Navigation />
+
       <section className="vh-100 login-background">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -115,13 +124,25 @@ const Login = () => {
                       </div>
 
                       <div className="mb-2">
-                        <button
-                          onClick={onSubmitHandler}
-                          className="btn btn-dark btn-lg btn-block"
-                          type="button"
-                        >
-                          Login
-                        </button>
+                        {isloading ? (
+                          <div className="m-auto text-center" >
+                            <div
+                              className="spinner-grow"
+                              role="status"
+                            >
+
+                            </div>
+                            <h5>Loading</h5>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={onSubmitHandler}
+                            className="btn btn-dark btn-lg btn-block"
+                            type="button"
+                          >
+                            Login
+                          </button>
+                        )}
                       </div>
                       {!isAuth && (
                         <h6 className="font-weight-bold">
