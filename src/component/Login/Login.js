@@ -16,6 +16,8 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  console.log("stable branch")
+
   const navigateTo = () => {
     navigate("/user-router/team", { replace: true });
   };
