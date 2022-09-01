@@ -6,39 +6,38 @@ const Navigation = () => {
   const [user, setUser] = useState(false);
 
   const fetchUser = async () => {
-    
-    try {
-      
-      const result = await fetch( "https://dinamo-anatolia.herokuapp.com/auth/get-user",
-      {
-        method: "POST",
-        headers: {
-          token: localStorage.token,
-        },
-      })
+    const url =
+      process.env.MODE === "production"
+        ? "https://dinamo-anatolia.herokuapp.com/"
+        : "http://localhost:5000/";
 
-      const userName = await result.json();
-      setUser(userName.user_name);
+    if (localStorage.token) {
+      console.log("token sent")
+      try {
+        const result = await fetch(url + "auth/get-user", {
+          method: "POST",
+          headers: {
+            token: localStorage.token,
+          },
+        });
 
-    } catch (error) {
-      console.log(error.message);
+        const userName = await result.json();
+        setUser(userName.user_name);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
-
   };
 
-  useEffect( ()=> {
-
-fetchUser()
-  }, [] )
-
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <>
       <nav className="navBar">
         <div className="navBar-subFrame">
-        
           <div className="navBar-subFrame-leftDiv">
-
             <Link className="" to="/">
               <img
                 className="nav-img"
@@ -46,7 +45,6 @@ fetchUser()
                 alt="..."
               />
             </Link>
-
           </div>
           <div className="navBar-subFrame-rightDiv">
             <div>
@@ -63,9 +61,8 @@ fetchUser()
                   className="nav-img"
                   src={require("../../images/user.png")}
                   alt="events"
-                /> {
-                  user? user: "Login"
-                }
+                />{" "}
+                {user ? user : "Login"}
               </Link>
               <Link className="navBar-Item" to="/register">
                 <img
@@ -75,7 +72,6 @@ fetchUser()
                 />
                 Register
               </Link>
-
             </div>
           </div>
         </div>

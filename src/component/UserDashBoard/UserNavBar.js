@@ -11,17 +11,17 @@ import {
   faSmile,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import Button from "react-bootstrap/esm/Button";
+import "./UserNavBar.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 
 const UserNavBar = ({ setIsAuth, user, userStatus }) => {
   const [teamShow, setTeamShow] = useState(false);
   const [adminShow, setAdminShow] = useState(false);
-  console.log(userStatus);
+
 
   const logout = (e) => {
     e.preventDefault();
@@ -31,127 +31,115 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
 
   return (
     <>
-      <Navbar expand="lg" className="mb-4 bg-secondary" fixed="top">
-        <Container>
-          <Navbar.Brand>{user}</Navbar.Brand>
+      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+        <a className="navbar-brand text-light px-2" href="#">
+          {" "}
+          <FontAwesomeIcon icon={faSmile} /> {user}
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav col-10">
+            <Link className="nav-link text-light " to="/">
+              <FontAwesomeIcon icon={faHouse} />
+              {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
+              <span> Main Page</span>
+            </Link>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+            <li class="nav-item dropdown ">
+              <a
+                className="nav-link dropdown-toggle text-light"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <FontAwesomeIcon icon={faFutbol} /> Team Options
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <Link className="dropdown-item" to="/user-router/team">
+                  Team Dashboard
+                </Link>
+
+                <div class="dropdown-divider"></div>
+                <Link className="dropdown-item" to="/user-router/team-calender">
+                  Events
+                </Link>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown ">
+              <a
+                className="nav-link dropdown-toggle text-light"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <FontAwesomeIcon icon={faUser} /> User Options
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <Link className="dropdown-item" to="/user-router/user-home">
+                    User Dashboard
+                </Link>
+
+                <div class="dropdown-divider"></div>
+                <Link className="dropdown-item" to="/user-router/user-profile">
+                  User Profile
+                </Link>
+              </div>
+            </li>
+            {userStatus === "admin" && (
+              <li class="nav-item dropdown ">
+                <a
+                  className="nav-link dropdown-toggle text-light"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <FontAwesomeIcon icon={faFolderPlus} /> Admin Page
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">
+                    User Requests
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">
+                    {" "}
+                    Edit User
+                  </a>
+                  <div class="dropdown-divider"></div>
+                </div>
+              </li>
+            )}
+          </div>
+
+          <div className="navbar-nav col-2">
+            <Link className="nav-link text-light text-right" to="/" onClick = { () => {localStorage.removeItem("token")  } } >
+              <FontAwesomeIcon icon={faHouse} />
+              {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
+              <span> Logout</span>
+            </Link>
+          </div>
+        </div>
+      </nav>
     </>
-    // <>
-    //   <div
-    //     className="navbar-nav bg-gradient-secondary sidebar sidebar-dark"
-    //     id="accordionSidebar"
-    //   >
-    //     <a className="sidebar-brand d-flex align-items-center justify-content-center">
-    // <div className="sidebar-brand-icon rotate-n-15">
-    //   <FontAwesomeIcon icon={faSmile} />
-    // </div>
-    //       <div className="sidebar-brand-text mx-3">{user} </div>
-    //     </a>
-
-    // <div className="nav-item active">
-    //   <Link className="nav-link" to="/">
-    //     <FontAwesomeIcon icon={faHouse} />
-    //     {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
-    //     <span> Main Page</span>
-    //   </Link>
-    // </div>
-
-    //     <div className="nav-item collapse">
-    //       <Link className="nav-link" to="/user-router/user-home">
-    //         <FontAwesomeIcon icon={faUser} />
-    //         {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
-    //         <span> Dashboard</span>
-    //       </Link>
-    //     </div>
-
-    //     <hr className="sidebar-divider" />
-
-    //     <div
-    //       className="nav-item active"
-    //       onClick={() => {
-    //         {
-    //           !teamShow ? setTeamShow(true) : setTeamShow(false);
-    //         }
-    //         console.log(teamShow);
-    //       }}
-    //     >
-    //       <div className="nav-link ">
-    //         <FontAwesomeIcon icon={faFutbol} />
-    //         <span>Team Page</span>
-    //       </div>
-    //       <div
-    //         id="collapseTwo"
-    //         className={teamShow ? "collapse show" : "collapse"}
-    //       >
-    //         <div className="bg-white py-2 collapse-inner rounded">
-    //           <Link className="collapse-item" to="/user-router/team-calender">
-    //             Calender
-    //           </Link>
-    //           <Link className="collapse-item" to="/user-router/team">
-    //             Team
-    //           </Link>
-    //           <Link className="collapse-item" to="/user-router/players">
-    //             Players
-    //           </Link>
-    //           <Link className="collapse-item" to="/user-router/score_table">
-    //             Score Table
-    //           </Link>
-    //         </div>
-    //       </div>
-    //     </div>
-
-    //     <hr className="sidebar-divider" />
-
-    //     {userStatus === "admin" && (
-    //       <div className="nav-item active" onClick = {  () => {
-    //         !adminShow? setAdminShow(true): setAdminShow(false)
-    //       }  } >
-    //       <div className="nav-link ">
-    //         <FontAwesomeIcon icon={faFolderPlus} />
-    //         <span>Admin Page</span>
-    //       </div>
-    //       <div
-    //         id="collapseTwo"
-    //         className={adminShow ? "collapse show" : "collapse"}
-    //       >
-    //         <div className="bg-white py-2 collapse-inner rounded">
-    //           <Link className="collapse-item" to="/user-router/add-user">
-    //             Add User
-    //           </Link>
-    //           <Link className="collapse-item" to="/user-router/team-calender">
-    //             Add Player
-    //           </Link>
-    //         </div>
-    //       </div>
-
-    //       </div>
-    //     )}
-
-    //     <Button onClick={(e) => logout(e)}> Log Out </Button>
-    //   </div>
-    // </>
   );
 };
 

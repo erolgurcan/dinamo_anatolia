@@ -18,8 +18,6 @@ app.use(express.static(path.join(__dirname, "build")));
   });
   client.connect();
 
-console.log(process.env);
-
 // DB Settings
 
 app.listen(PORT, () => {

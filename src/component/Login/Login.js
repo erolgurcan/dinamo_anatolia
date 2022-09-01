@@ -5,7 +5,13 @@ import Navigation from "../Navigation/Navigation";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 
+
+
+
 const Login = () => {
+
+  const url = process.env.MODE === "production"? "https://dinamo-anatolia.herokuapp.com/": "http://localhost:5000/"
+
   const [isAuth, setIsAuth] = useState(true);
 
   const navigate = useNavigate();
@@ -23,7 +29,7 @@ const Login = () => {
     try {
       const body = { email, password };
       const response = await fetch(
-        "https://dinamo-anatolia.herokuapp.com/auth/login",
+        url + "auth/login",
         {
           method: "POST",
           headers: {
@@ -34,7 +40,7 @@ const Login = () => {
       );
 
       const parseRes = await response.json();
-      console.log(parseRes);
+
 
       if (parseRes.token) {
         localStorage.setItem("token", parseRes.token);
@@ -51,7 +57,7 @@ const Login = () => {
 
   const IsAuth = async () => {
     const result = await fetch(
-      "https://dinamo-anatolia.herokuapp.com/auth/is-auth",
+      url + "auth/is-auth",
       {
         method: "POST",
         headers: {
