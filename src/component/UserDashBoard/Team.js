@@ -6,66 +6,76 @@ import TeamScoreTable from "./TeamTable/TeamScoreTable";
 import TeamSchedule from "./TeamTable/TeamSchedule";
 import Form from "react-bootstrap/Form";
 
-const url = process.env.DATABASE_URL
-  ? "https://dinamo-anatolia.herokuapp.com/"
-  : "http://localhost:5000";
-
 const Team = () => {
   const [score, setScore] = useState([]);
   const [standing, setStanding] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(false);
   const [leauge, setLeague] = useState([]);
+  const url =
+    process.env.MODE === "production"
+      ? "https://dinamo-anatolia.herokuapp.com/"
+      : "http://localhost:5000/";
 
   const onChangeHandler = (e) => {
     const league = document.getElementById("league").value;
-    console.log(league);
+    getStanding();
+    getScoredTable();
   };
 
   const getLeague = async () => {
-    const response = await fetch(
-       url + "http://localhost:5000/teamInfo/leagues",
 
-      {
-        method: "GET",
-        headers: {
-          token: localStorage.token,
-        },
-      }
-    );
+    const response = await fetch(url + "teamInfo/leagues", {
+      method: "GET",
+      headers: {
+        token: localStorage.token,
+      },
+    });
+
     const jsonData = await response.json();
     setLeague(jsonData);
-    console.log(jsonData);
-  };
-
-  const getScore = async () => {
-    const response = await fetch(
-      "https://dinamo-anatolia.herokuapp.com/score_table"
-    );
-    const jsonData = await response.json();
-    setScore(jsonData);
-    setLoading(true);
   };
 
   const getStanding = async () => {
-    const response = await fetch(
-      "https://dinamo-anatolia.herokuapp.com/standing_table"
-    );
+    const response = await fetch(url + "teamInfo/standing", {
+      method: "POST",
+      headers: {
+        token: localStorage.token,
+        league: document.getElementById("league").value
+          ? document.getElementById("league").value
+          : "Vancouver Metro Soccer League",
+      },
+    });
     const jsonData = await response.json();
     setStanding(jsonData);
     setLoading(true);
+    console.log(jsonData);
+  };
+
+  const getScoredTable = async () => {
+    const response = await fetch(url + "teamInfo/scored_table", {
+      method: "POST",
+      headers: {
+        token: localStorage.token,
+        league: document.getElementById("league").value
+          ? document.getElementById("league").value
+          : "Vancouver Metro Soccer League",
+      },
+    });
+    const jsonData = await response.json();
+    setScore(jsonData);
+    setLoading(true);
+    console.log(jsonData);
   };
 
   const getSchedule = async () => {
-    const response = await fetch(
-      "https://dinamo-anatolia.herokuapp.com/get_event"
-    );
+    const response = await fetch(url + "get_event");
     const jsonData = await response.json();
     setSchedule(jsonData);
   };
 
   useEffect(() => {
-    getScore();
+    getScoredTable();
     getStanding();
     getSchedule();
     getLeague();
@@ -82,15 +92,27 @@ const Team = () => {
             <h1 className="h3 mb-2 text-gray-800">Team Dashboard</h1>
           </div>
 
-          <div className="row">
+          <div className="row mx-1">
             <div className="card border-left-primary shadow h-100 py-2 mb-4 d-flex flex-lg-row flex-sm-column ">
               <div className="col-lg-6 col-sm-12">
                 <div className="text-s font-weight-bold text-primary p-2">
                   League
                 </div>
                 <Form.Select id="league" onChange={onChangeHandler}>
-                  {leauge.map((l) => (
-                    <option key={l.league}> {l.league}</option>
+                  {leauge?.map((l) => (
+                    <option
+                      key={l.league_name}
+                      value={l.league_name}
+                      id={l.league_name}
+                      selected={
+                        l.league_name === "Vancouver Metro Soccer League"
+                          ? true
+                          : false
+                      }
+                    >
+                      {" "}
+                      {l.league_name}
+                    </option>
                   ))}
                 </Form.Select>
               </div>
@@ -184,7 +206,6 @@ const Team = () => {
                 </div>
               </div>
             </div>
-
             <div className="col-xl-6 col-sm-12">
               <div className="card shadow mb-4 ">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -219,13 +240,12 @@ const Team = () => {
                 </div>
               </div>
             </div>
-
-          {/* Schedule */}
+            {/* Schedule */}
             <div className="col-xl-6 col-sm-12">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 className="m-0 font-weight-bold text-primary">
-                  Schedule
+                    Schedule
                   </h6>
                 </div>
                 <div
@@ -233,31 +253,26 @@ const Team = () => {
                   style={{ minHeight: "500px" }}
                 >
                   <div className="chart-area">
-                  <TeamSchedule schedule={schedule}></TeamSchedule>
+                    <TeamSchedule schedule={schedule}></TeamSchedule>
                   </div>
                 </div>
               </div>
             </div>
-
             <div className="col-xl-6 col-sm-12">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold text-primary">
-                 Chart
-                  </h6>
+                  <h6 className="m-0 font-weight-bold text-primary">Chart</h6>
                 </div>
                 <div
                   className="card-body h-100 overflow-auto"
                   style={{ minHeight: "500px" }}
                 >
                   <div className="chart-area">
-                  <TeamBarChart score={score}></TeamBarChart>
+                    <TeamBarChart score={score}></TeamBarChart>
                   </div>
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "build")));
 
 const client = new Client({
-  connectionString: connectionString,
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },
@@ -21,7 +21,6 @@ const client = new Client({
 client.connect();
 console.log(process.env.NODE_ENV);
 console.log( process.env.DATABASE_URL);
-
 // DB Settings
 
 app.listen(PORT, () => {

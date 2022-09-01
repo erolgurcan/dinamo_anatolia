@@ -8,16 +8,32 @@ import TeamPlayers from "./TeamPlayers";
 import TeamScoreTable from "./TeamScoreTable";
 import Admin from "./Admin";
 import AddUser from "./AddUser";
+import UserInfo from "./UserInfo";
+
+
 
 const UserRouter = () => {
+
+  const url =
+    process.env.MODE === "production"
+      ? "https://dinamo-anatolia.herokuapp.com/"
+      : "http://localhost:5000/";
+
   const [isAuth, setIsAuth] = useState(true);
   const [user, setUser] = useState([]);
   const [userStatus, setUserStatus] = useState("user");
 
   const checkAuthenticated = async () => {
+
+    if (!localStorage.getItem("token")){
+      console.log("token not exist")
+      setIsAuth(false);
+      return 
+      
+    }
     try {
       const res = await fetch(
-        "https://dinamo-anatolia.herokuapp.com/auth/is-auth",
+        url + "auth/is-auth",
         {
           method: "POST",
           headers: {
@@ -35,7 +51,7 @@ const UserRouter = () => {
   const getUser = async () => {
     try {
       const user = await fetch(
-        "https://dinamo-anatolia.herokuapp.com/auth/get-user",
+        url + "auth/get-user",
         {
           method: "POST",
           headers: {
@@ -61,8 +77,8 @@ const UserRouter = () => {
     <>
       {isAuth ? (
         <>
-          <div className="d-flex flex-lg-column">
-            <div className="col-lg-12 mb-4">
+          <div className="row">
+            <div className="col-lg-12">
               <UserNavBar
                 setIsAuth={setIsAuth}
                 userStatus={userStatus}
@@ -70,7 +86,7 @@ const UserRouter = () => {
               ></UserNavBar>
             </div>
 
-            <div className="col-lg-12">
+            <div className="col-lg-12 ">
               {" "}
               <Routes>
                 <Route path="team-calender" element={<TeamCalender />} />
@@ -78,6 +94,7 @@ const UserRouter = () => {
                 <Route path="team" element={<Team />} />
                 <Route path="players" element={<TeamPlayers />} />
                 <Route path="team_score" element={<TeamScoreTable />} />
+                <Route path="user-profile" element={<UserInfo />} />
                 {userStatus === "admin" && (
                   <Route path="admin" element={<Admin />} />
                 )}
