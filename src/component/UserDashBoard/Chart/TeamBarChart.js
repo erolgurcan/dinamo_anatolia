@@ -12,7 +12,7 @@ import {
 const TeamBarChart = ({ score }) => {
   const data = [];
 
-  score.forEach((element) => {
+  score?.forEach((element) => {
     let date = new Date(element.event_date).toDateString();
     let score = parseInt(element.team_score);
 

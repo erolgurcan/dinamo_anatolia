@@ -23,7 +23,7 @@ const TeamTable = ( {standing} ) => {
         </thead>
         <tbody>
           {standing.map((st) => (
-            <tr
+            <tr key = {st.team_name}
               className={
                 st.team_name === "Dinamo Anatolia" && "bg-primary text-white"
               }
