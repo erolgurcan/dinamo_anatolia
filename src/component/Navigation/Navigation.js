@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCalendar,
   faHouse,
   faRightFromBracket,
   faUserPlus,
@@ -74,7 +75,7 @@ const Navigation = () => {
 
 
             <Link className="nav-link text-light " to="/login">
-              <FontAwesomeIcon icon={faHouse} />
+              <FontAwesomeIcon icon={faCalendar} />
               {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
               <span> Events </span>
             </Link>

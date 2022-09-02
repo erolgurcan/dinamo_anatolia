@@ -69,9 +69,9 @@ const Register = () => {
   return (
     <>
     { modalShow && <RegisterModal className= "mt-10" modalShownHandler =  {modalShownHandler} userInfo= {userInfo}   /> } 
-      <Navigation />
-      <section className="vh-100 register-background">
-        <div className="container h-100">
+      <Navigation /> 
+      <section className="vh-100 register-background col-xs-12 w-100 p-4 ">
+      <div className="h-100 col-lg-6 m-auto col-sm-12">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
               <div className="card" style={{ borderRadius: "1rem" }}>

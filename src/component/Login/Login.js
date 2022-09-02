@@ -4,6 +4,7 @@ import UserDashBoard from "../UserDashBoard/UserDashBoard";
 import Navigation from "../Navigation/Navigation";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [isAuth, setIsAuth] = useState(true);
@@ -76,10 +77,10 @@ const Login = () => {
     <>
       <Navigation />
 
-      <section className="vh-100 login-background">
-        <div className="container h-100">
+      <section className="vh-100 login-background  col-xs-12">
+      <div className="h-100 col-lg-6 m-auto col-sm-12">
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col col-xl-10">
+            <div className="col col-xl-10 col-sm-12 ">
               <div className="card" style={{ borderRadius: "1rem" }}>
                 <div className="col-md-2 col-lg-7 d-flex align-items-center m-auto">
                   <div className="card-body text-black">
@@ -125,19 +126,14 @@ const Login = () => {
 
                       <div className="mb-2">
                         {isloading ? (
-                          <div className="m-auto text-center" >
-                            <div
-                              className="spinner-grow"
-                              role="status"
-                            >
-
-                            </div>
+                          <div className="m-auto text-center">
+                            <div className="spinner-grow" role="status"></div>
                             <h5>Loading</h5>
                           </div>
                         ) : (
                           <button
                             onClick={onSubmitHandler}
-                            className="btn btn-dark btn-lg btn-block"
+                            className="btn btn-dark btn-lg btn-block mb-2"
                             type="button"
                           >
                             Login
@@ -150,9 +146,13 @@ const Login = () => {
                           Invalid Password or Email{" "}
                         </h6>
                       )}
-                      <div className="d-flex flex-column">
-                        <h6>Do you want to join us?</h6>
-                        <h6>Fill out your form here</h6>
+                      <div className="d-flex flex-column text-center mt-2">
+                        <h6 className="mt-2" >Do you want to join us?</h6>
+                        <h6 className="mt-2" >Fill out your form below...</h6>
+                        <Link className="nav-link text-primary  m-auto  font-weight-bold" to="/register">
+                          {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
+                          <span> Register</span>
+                        </Link>
                       </div>
                     </form>
                   </div>
