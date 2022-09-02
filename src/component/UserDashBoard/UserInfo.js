@@ -26,13 +26,13 @@ const UserInfo = () => {
   };
 
   const onClickHandler = async () => {
-    const name = document.getElementById("name").value || userData.user_name.split(" ")[0];
-    const surname = document.getElementById("surname").value || userData.user_name.split(" ")[1] ;
-    const mobile = document.getElementById("phoneNumber").value || userData.phone_number ;
+    const name = document.getElementById("name").value || userData?.user_name.split(" ")[0];
+    const surname = document.getElementById("surname").value || userData?.user_name.split(" ")[1] ;
+    const mobile = document.getElementById("phoneNumber").value || userData?.phone_number ;
     const address =  (document.getElementById("addressLine1").value + " ;; " + document.getElementById("addressLine2").value ) || userData.address  ;
-    const postcode = document.getElementById("postcode").value || userData.postcode ;
-    const country = document.getElementById("country").value || userData.country ;
-    const stateRegion = document.getElementById("state").value || userData.state_region ;
+    const postcode = document.getElementById("postcode").value || userData?.postcode ;
+    const country = document.getElementById("country").value || userData?.country ;
+    const stateRegion = document.getElementById("state").value || userData?.state_region ;
     const user_email = userData.user_email;
 
     try {
@@ -48,20 +48,20 @@ const UserInfo = () => {
       };
 
       console.log(body);
-      const user = await fetch(
+
+      await fetch(
         "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/update-user",
         {
           method: "POST",
           headers: {
+            "Content-type": "application/json",
             token: localStorage.token,
           },
           body: JSON.stringify(body),
         }
+        
       );
-
-      const userParse = await user.json();
-      setUserData(userParse);
-      console.log(userParse);
+;
       setLoading(false);
     } catch (error) {}
   };

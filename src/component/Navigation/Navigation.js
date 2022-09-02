@@ -6,15 +6,11 @@ const Navigation = () => {
   const [user, setUser] = useState(false);
 
   const fetchUser = async () => {
-    const url =
-      process.env.MODE === "production"
-        ? "https://dinamo-anatolia.herokuapp.com/"
-        : "http://localhost:6000/";
 
     if (localStorage.token) {
       console.log("token sent")
       try {
-        const result = await fetch(url + "auth/get-user", {
+        const result = await fetch("https://dinamo-anatolia.herokuapp.com/" + "auth/get-user", {
           method: "POST",
           headers: {
             token: localStorage.token,
