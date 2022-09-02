@@ -44,3 +44,21 @@
 .nav-img{
     max-width: 2rem;
 }
+
+@media screen and (max-width: 800px) {
+  .navBar-subFrame-leftDiv{
+    width: 100%;
+}
+
+.navBar-subFrame {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.navBar-subFrame > * {
+  font-size: x-small;
+}
+}

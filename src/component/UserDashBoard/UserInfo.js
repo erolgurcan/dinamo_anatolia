@@ -46,9 +46,13 @@ const UserInfo = () => {
   };
 
   const onClickHandler = async () => {
-    const user_name = ( document.getElementById("name").value + " " +  document.getElementById("surname").value;
 
-    const mobile =
+    const name =  document.getElementById("name").value || userData?.user_name.split(" ")[0];
+    const surname =  document.getElementById("surname").value || userData?.user_name.split(" ")[1];
+
+    const user_name = name + " " + surname
+
+    const phone_number =
       document.getElementById("phoneNumber").value || userData?.phone_number;
     const address =
       document.getElementById("addressLine1").value +
@@ -63,9 +67,8 @@ const UserInfo = () => {
     const user_email = userData.user_email;
 
     const body = {
-      name,
-      surname,
-      mobile,
+      user_name,
+      phone_number,
       address,
       postcode,
       country,
@@ -85,8 +88,8 @@ const UserInfo = () => {
   return loading ? (
     <div>Loading</div>
   ) : (
-    <div className="mt-4">
-      <div className="rounded bg-white  w-75 m-auto">
+    <div className="">
+      <div className="rounded bg-white  w-100 m-auto" style={{minHeight:"1100px"}} >
         <div className="row">
           <div className="col-md-3 border-right">
             <div className="d-flex flex-column align-items-center text-center p-3 py-5">
