@@ -2,18 +2,21 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 const UserInfo = () => {
-
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
   const getUser = async () => {
     try {
-      const user = await fetch("https://dinamo-anatolia.herokuapp.com/" + "auth/get-user", {
-        method: "POST",
-        headers: {
-          token: localStorage.token,
-        },
-      });
+      const user = await fetch(
+        "https://dinamo-anatolia.herokuapp.com/" + "auth/get-user",
+        {
+          method: "POST",
+          headers: {
+            token: localStorage.token,
+          },
+        }
+      );
 
       const userParse = await user.json();
       setUserData(userParse);
@@ -23,40 +26,44 @@ const UserInfo = () => {
   };
 
   const onClickHandler = async () => {
-    const name = document.getElementById("name");
-    const surname = document.getElementById("surname");
-    const mobile = document.getElementById("phoneNumber");
-    const address =
-      document.getElementById("addressLine1").value +
-      " ;; " +
-      document.getElementById("addressLine2").value +
-      " ;; " +
-      document.getElementById("postcode").value +
-      " ;; " +
-      document.getElementById("state").value +
-      " ;; " +
-      document.getElementById("country").value  ;
+    const name = document.getElementById("name").value || userData.user_name.split(" ")[0];
+    const surname = document.getElementById("surname").value || userData.user_name.split(" ")[1] ;
+    const mobile = document.getElementById("phoneNumber").value || userData.phone_number ;
+    const address =  (document.getElementById("addressLine1").value + " ;; " + document.getElementById("addressLine2").value ) || userData.address  ;
+    const postcode = document.getElementById("postcode").value || userData.postcode ;
+    const country = document.getElementById("country").value || userData.country ;
+    const stateRegion = document.getElementById("state").value || userData.state_region ;
+    const user_email = userData.user_email;
 
-      try {
-        const user = await fetch("https://dinamo-anatolia.herokuapp.com/" + "teamInfo/update-user", {
+    try {
+      const body = {
+        name,
+        surname,
+        mobile,
+        address,
+        postcode,
+        country,
+        stateRegion,
+        user_email
+      };
+
+      console.log(body);
+      const user = await fetch(
+        "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/update-user",
+        {
           method: "POST",
           headers: {
             token: localStorage.token,
           },
-          body: {
-            name: name,
-            surname: surname,
-            mobile: mobile,
-            address: address
-          }
-        });
-  
-        const userParse = await user.json();
-        setUserData(userParse);
-        console.log(userParse);
-        setLoading(false);
-      } catch (error) {}
+          body: JSON.stringify(body),
+        }
+      );
 
+      const userParse = await user.json();
+      setUserData(userParse);
+      console.log(userParse);
+      setLoading(false);
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -161,7 +168,6 @@ const UserInfo = () => {
                     id="country"
                     className="form-control"
                     placeholder="country"
-
                   />
                 </div>
                 <div className="col-md-6">
@@ -170,7 +176,6 @@ const UserInfo = () => {
                     type="text"
                     id="state"
                     className="form-control"
-
                     placeholder="state"
                   />
                 </div>
