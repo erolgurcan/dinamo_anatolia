@@ -43,6 +43,12 @@ const UserInfo = () => {
           headers: {
             token: localStorage.token,
           },
+          body: {
+            name: name,
+            surname: surname,
+            mobile: mobile,
+            address: address
+          }
         });
   
         const userParse = await user.json();
