@@ -50,7 +50,7 @@ const UserInfo = () => {
     const name =  document.getElementById("name").value || userData?.user_name.split(" ")[0];
     const surname =  document.getElementById("surname").value || userData?.user_name.split(" ")[1];
 
-    const user_name = name + " " + surname
+    const user_name = name + " " + surname;
 
     const phone_number =
       document.getElementById("phoneNumber").value || userData?.phone_number;
