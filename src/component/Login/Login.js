@@ -77,7 +77,7 @@ const Login = () => {
     <>
       <Navigation />
 
-      <section className="vh-100 login-background  col-xs-12">
+      <section className="vh-100 login-background  col-sm-12">
       <div className="h-100 col-lg-6 m-auto col-sm-12">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10 col-sm-12 ">

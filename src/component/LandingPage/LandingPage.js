@@ -95,12 +95,11 @@ const LandingPage = () => {
                 <div className="p-5">
                   <h2 className="display-4"> We are here to welcome you! </h2>
                   <p>
-                    With the leadership of the club’s first president Kivanc
-                    Ozcetin, <strong>Dinamo Anatolia</strong> started its
+                    With the leadership of the club’s first members of board, <strong>Dinamo Anatolia</strong> started its
                     journey with a handful of companions to play a more
                     structured football than drop-in matches. And the mission of
                     the team is to play at the highest level of football in
-                    Canada without losing its amateur soul
+                    Canada without losing its amateur soul.
                   </p>
                 </div>
               </div>
