@@ -2,10 +2,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 const UserInfo = () => {
-  const url =
-    process.env.MODE === "production"
-      ? "https://dinamo-anatolia.herokuapp.com/"
-      : "http://localhost:5000/";
 
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +22,7 @@ const UserInfo = () => {
     } catch (error) {}
   };
 
-  const onClickHandler = () => {
+  const onClickHandler = async () => {
     const name = document.getElementById("name");
     const surname = document.getElementById("surname");
     const mobile = document.getElementById("phoneNumber");
@@ -40,6 +36,20 @@ const UserInfo = () => {
       document.getElementById("state").value +
       " ;; " +
       document.getElementById("country").value  ;
+
+      try {
+        const user = await fetch("https://dinamo-anatolia.herokuapp.com/" + "teamInfo/update-user", {
+          method: "POST",
+          headers: {
+            token: localStorage.token,
+          },
+        });
+  
+        const userParse = await user.json();
+        setUserData(userParse);
+        console.log(userParse);
+        setLoading(false);
+      } catch (error) {}
 
   };
 
