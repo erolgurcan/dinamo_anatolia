@@ -23,7 +23,9 @@ const BoardMember = () => {
           <BoardMemberCard member_name={"Orcan Günay"} position = {"Deputy Chairman"} photo = {"orcan.jpg"}   />
           <BoardMemberCard member_name={"Sabri Can Çalışır"} position = {"Director of Football"} photo = {"sabri.png"}   />
           <BoardMemberCard  member_name={"Osman Aslan"} position = {"General Secretary"} photo = {"osman.png"}  />
+          <BoardMemberCard member_name={"Umut Cosar"} position = {"Executive Board Member "} photo = {"umut.png"}   />
           <BoardMemberCard member_name={"Erol Gurcan"} position = {"IT Consult-Developer "} photo = {"erol.png"}   />
+
         </div>
       </div>
     </>

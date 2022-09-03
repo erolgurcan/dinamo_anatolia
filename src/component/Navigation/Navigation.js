@@ -75,7 +75,7 @@ const Navigation = () => {
             </Link>
 
 
-            <Link className="nav-link text-light " to="/login">
+            <Link className="nav-link text-light " to="/events">
               <FontAwesomeIcon icon={faCalendar} />
               {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
               <span> Events </span>

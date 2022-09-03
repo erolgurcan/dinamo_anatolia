@@ -23,6 +23,7 @@ import Login from "./component/Login/Login";
 import UserRouter from "./component/UserDashBoard/UserRouter";
 import Register from "./component/Register/Register";
 import BoardMember from "./component/BoardMember/BoardMember";
+import EventsMain from "./component/Events/EventsMain";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -33,6 +34,7 @@ root.render(
       <Route path="user-router/*" element={<UserRouter />}></Route>
       <Route path="register" element={<Register />}></Route>
       <Route path="board-member" element={<BoardMember />}></Route>
+      <Route path="events" element={<EventsMain />}></Route>
     </Routes>
   </BrowserRouter>
 );
