@@ -6,6 +6,7 @@ import {
   faHouse,
   faRightFromBracket,
   faUserPlus,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -92,6 +93,12 @@ const Navigation = () => {
               <span> Register</span>
             </Link>
 
+
+            <Link className="nav-link text-light " to="/board-member">
+              <FontAwesomeIcon icon={faUsers} />
+              {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
+              <span> Board Members</span>
+            </Link>
 
           </div>
         </div>
