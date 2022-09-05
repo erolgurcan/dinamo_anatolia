@@ -151,7 +151,7 @@ const Register = () => {
                           className="btn btn-dark btn-lg btn-block"
                           type="button"
                         >
-                          Register
+                          Send
                         </button>
                       </div>
                     </form>

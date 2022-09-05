@@ -1,6 +1,6 @@
 import React from "react";
 import "./LandingPage.css";
-import Navigation from "../Navigation/Navigation";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
@@ -95,11 +95,26 @@ const LandingPage = () => {
                 <div className="p-5">
                   <h2 className="display-4"> We are here to welcome you! </h2>
                   <p>
-                    With the leadership of the club’s first members of board, <strong>Dinamo Anatolia</strong> started its
-                    journey with a handful of companions to play a more
-                    structured football than drop-in matches. And the mission of
-                    the team is to play at the highest level of football in
-                    Canada without losing its amateur soul.
+                    With the leadership of the club’s first members of board,{" "}
+                    <strong>Dinamo Anatolia</strong> started its journey with a
+                    handful of companions to play a more structured football
+                    than drop-in matches. And the mission of the team is to play
+                    at the highest level of football in Canada without losing
+                    its amateur soul. 
+                  </p>
+                  <p>
+                  If you want to join us, you may fill
+                    out the form below, and we will get back to you as soon as possible.
+                  </p>
+                  <p className="text-center">
+                    <button type="button" class="btn btn-primary">
+                      <Link className="text-center text-light" to="/register">
+                        {" "}
+                        <span>
+                          <strong> Join Us !</strong>
+                        </span>{" "}
+                      </Link>
+                    </button>
                   </p>
                 </div>
               </div>

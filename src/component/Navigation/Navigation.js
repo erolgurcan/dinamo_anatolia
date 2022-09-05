@@ -90,7 +90,7 @@ const Navigation = () => {
             <Link className="nav-link text-light " to="/register">
               <FontAwesomeIcon icon={faUserPlus} />
               {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
-              <span> Register</span>
+              <span> Join Us</span>
             </Link>
 
 
