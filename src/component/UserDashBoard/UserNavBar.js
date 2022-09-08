@@ -18,7 +18,6 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
   const [teamShow, setTeamShow] = useState(false);
   const [adminShow, setAdminShow] = useState(false);
 
-
   const logout = (e) => {
     e.preventDefault();
     setIsAuth(false);
@@ -72,6 +71,14 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
                 <Link className="dropdown-item" to="/user-router/team-calender">
                   Events
                 </Link>
+
+                <div class="dropdown-divider"></div>
+                <Link
+                  className="dropdown-item"
+                  to="/user-router/team-pay_table"
+                >
+                  Pay Table
+                </Link>
               </div>
             </li>
 
@@ -89,7 +96,7 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to="/user-router/user-home">
-                    User Dashboard
+                  User Dashboard
                 </Link>
 
                 <div class="dropdown-divider"></div>
@@ -127,7 +134,13 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
           </div>
 
           <div className="navbar-nav col-2">
-            <Link className="nav-link text-light text-right" to="/" onClick = { () => {localStorage.removeItem("token")  } } >
+            <Link
+              className="nav-link text-light text-right"
+              to="/"
+              onClick={() => {
+                localStorage.removeItem("token");
+              }}
+            >
               <FontAwesomeIcon icon={faHouse} />
               {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
               <span> Logout</span>
