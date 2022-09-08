@@ -4,9 +4,8 @@ import { faMapPin } from "@fortawesome/free-solid-svg-icons";
 import context from "react-bootstrap/esm/AccordionContext";
 
 const CalenderSchedueleCard = ( {data} ) => {
-
-  const date =  new Date(data.event_date2) 
-  const time = date.toTimeString().split(" ")[0]
+  const date = new Date(data.event_date2.replace("Z", "")+"-07:00" );
+  const time = date.toTimeString().split(" ")[0];
   const match = data.home? "Dinamo Anatolia vs " + data.opponent_name: data.opponent_name + " vs Dinamo Anatolia"
 
   return (
