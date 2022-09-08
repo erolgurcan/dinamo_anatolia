@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 const EventCard = ({ data }) => {
-  const date = new Date(data.event_date2);
+  const date = new Date(data.event_date2.replace("Z", "")+"-07:00" );
   const time = date.toTimeString().split(" ")[0];
   const match = data.home
     ? "Dinamo Anatolia vs " + data.opponent_name
@@ -45,7 +45,7 @@ const EventCard = ({ data }) => {
             <h5 className="card-title text-center"> {date.toDateString()} </h5>
             <h4 className="card-title text-center">
               {" "}
-              <strong>{time} </strong>{" "}
+              <strong>{time}  </strong>{" "}
             </h4>
             <hr></hr>
             <h5 className="card-title text-center mt-2">

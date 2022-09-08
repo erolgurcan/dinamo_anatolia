@@ -15,8 +15,16 @@ const TeamPayInfo = () => {
       }
     );
     const json = await result.json();
-    console.log(json);
     setPayTable(json);
+    createHeaders(json);
+  };
+
+  const createHeaders = (json) => {
+    const arr = json[0];
+    const totalMonth = Object.keys(arr).length;
+    const firstMonth = arr[1];
+
+    console.log(Object.keys(arr).sort());
   };
 
   useEffect(() => {
@@ -25,32 +33,22 @@ const TeamPayInfo = () => {
 
   return (
     <>
-      <table class="table table-striped w-50 m-auto  ">
+      <table class="table w-75 m-auto">
         <thead>
           <tr>
-            <th scope="col">Player Name</th>
-            <th scope="col">10-2022</th>
-            <th scope="col">11-2022</th>
-            <th scope="col">12-2022</th>
-            <th scope="col">01-2023</th>
-            <th scope="col">02-2023</th>
-            <th scope="col">03-2023</th>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
           </tr>
         </thead>
         <tbody>
-
-
-        {  payTable.map( p => (
-
-            <tr>
-            <th scope="row"> {p.player_full_name} </th>
-            <td> {} </td>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
           </tr>
-
-        ) ) }
-
           <tr>
             <th scope="row">2</th>
             <td>Jacob</td>
