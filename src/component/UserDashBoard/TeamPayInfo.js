@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 const TeamPayInfo = () => {
   const [payTable, setPayTable] = useState([]);
+  const [tableHeader, setTableHeader] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getPayTable = async () => {
+    setLoading(true);
     const result = await fetch(
-      "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/get_pay_table",
+      "https://dinamo-anatolia.herokuapp.com/teamInfo/get_pay_table",
 
       {
         method: "GET",
@@ -17,14 +20,14 @@ const TeamPayInfo = () => {
     const json = await result.json();
     setPayTable(json);
     createHeaders(json);
+    console.log(json);
   };
 
   const createHeaders = (json) => {
     const arr = json[0];
-    const totalMonth = Object.keys(arr).length;
-    const firstMonth = arr[1];
-
-    console.log(Object.keys(arr).sort());
+    const array = Object.keys(arr);
+    setTableHeader(array);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -33,36 +36,31 @@ const TeamPayInfo = () => {
 
   return (
     <>
-      <table class="table w-75 m-auto">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="mt-4 col-lg-6 col-sm-12 " >
+      {!loading ? (
+        <table className="table table-striped w-75 m-auto table-responsive-sm min-vh-7 ">
+          <thead>
+            <tr>
+              {Array.from(tableHeader).map((e) => (
+                <th key = { e + "-header" } > {e} </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {payTable?.map((e) => (
+              <tr key = {e + "-row"} >
+                {" "}
+                {Array.from(Object.values(e)).map((d) => (
+                  <td   > {d} </td>
+                ))}{" "}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <h3>Loading....</h3>
+      )}
+      </div>
     </>
   );
 };

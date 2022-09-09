@@ -26,7 +26,7 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <a className="navbar-brand text-light px-2" href="#">
           {" "}
           <FontAwesomeIcon icon={faSmile} /> {user}
@@ -50,7 +50,7 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
               <span> Main Page</span>
             </Link>
 
-            <li class="nav-item dropdown ">
+            <li className="nav-item dropdown ">
               <a
                 className="nav-link dropdown-toggle text-light"
                 href="#"
@@ -62,17 +62,17 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
               >
                 <FontAwesomeIcon icon={faFutbol} /> Team Options
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to="/user-router/team">
                   Team Dashboard
                 </Link>
 
-                <div class="dropdown-divider"></div>
+                <div className="dropdown-divider"></div>
                 <Link className="dropdown-item" to="/user-router/team-calender">
                   Events
                 </Link>
 
-                <div class="dropdown-divider"></div>
+                <div className="dropdown-divider"></div>
                 <Link
                   className="dropdown-item"
                   to="/user-router/team-pay_table"
@@ -82,7 +82,7 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
               </div>
             </li>
 
-            <li class="nav-item dropdown ">
+            <li className="nav-item dropdown ">
               <a
                 className="nav-link dropdown-toggle text-light"
                 href="#"
@@ -94,19 +94,19 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
               >
                 <FontAwesomeIcon icon={faUser} /> User Options
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to="/user-router/user-home">
                   User Dashboard
                 </Link>
 
-                <div class="dropdown-divider"></div>
+                <div className="dropdown-divider"></div>
                 <Link className="dropdown-item" to="/user-router/user-profile">
                   User Profile
                 </Link>
               </div>
             </li>
             {userStatus === "admin" && (
-              <li class="nav-item dropdown ">
+              <li className="nav-item dropdown ">
                 <a
                   className="nav-link dropdown-toggle text-light"
                   href="#"
@@ -118,16 +118,16 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
                 >
                   <FontAwesomeIcon icon={faFolderPlus} /> Admin Page
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a className="dropdown-item" href="#">
                     User Requests
                   </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="#">
                     {" "}
                     Edit User
                   </a>
-                  <div class="dropdown-divider"></div>
+                  <div className="dropdown-divider"></div>
                 </div>
               </li>
             )}
