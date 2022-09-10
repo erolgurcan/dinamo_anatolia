@@ -1,5 +1,5 @@
 import React from "react";
-import "./LandingPage.css";
+import "../Main.css";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
@@ -12,7 +12,7 @@ const LandingPage = () => {
               <h1 className="masthead-heading mb-0">Dinamo Anatolia</h1>
               <h2 className="masthead-subheading  mb-0"></h2>
               <a
-                className="btn btn-primary btn-xl rounded-pill mt-5"
+                className="btn btn-primary btn-lg rounded-pill mt-5"
                 href="#scroll"
               >
                 Learn More
@@ -107,7 +107,7 @@ const LandingPage = () => {
                     out the form below, and we will get back to you as soon as possible.
                   </p>
                   <p className="text-center">
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary btn-m">
                       <Link className="text-center text-light" to="/register">
                         {" "}
                         <span>

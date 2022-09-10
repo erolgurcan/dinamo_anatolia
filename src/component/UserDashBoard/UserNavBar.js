@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import "./UserDashBoard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFolderPlus,
@@ -11,7 +10,6 @@ import {
   faSmile,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import "./UserNavBar.css";
 import { Link } from "react-router-dom";
 
 const UserNavBar = ({ setIsAuth, user, userStatus }) => {

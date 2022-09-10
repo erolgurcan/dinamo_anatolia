@@ -64,6 +64,25 @@
   --bs-body-bg: #fff;
 }
 
+
+.label-default {
+  color:  #ee0979 !important;
+  font-weight: bold;
+}
+
+
+.label-bool {
+  color:  white !important;
+  font-weight: bold;
+  display: block;
+  background-color: #0d6efd !important;
+margin-top: 1px;
+  padding: 0px !important;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
 *,
 *::before,
 *::after {
@@ -328,10 +347,6 @@ th {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
-}
-
-label {
-  display: inline-block;
 }
 
 button {
@@ -11322,7 +11337,7 @@ header.masthead {
   overflow: hidden;
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../../images/main.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../images/main.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: scroll;
