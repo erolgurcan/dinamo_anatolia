@@ -107,7 +107,7 @@ const LandingPage = () => {
                     out the form below, and we will get back to you as soon as possible.
                   </p>
                   <p className="text-center">
-                    <button type="button" class="btn btn-primary btn-m">
+                    <button type="button" class="btn btn-primary btn-lg">
                       <Link className="text-center text-light" to="/register">
                         {" "}
                         <span>

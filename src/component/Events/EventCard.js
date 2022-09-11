@@ -42,15 +42,15 @@ const EventCard = ({ data }) => {
       <div className="timeline-box one-of-two" onClick={handleShow}>
         <div className="card w-75 m-auto ">
           <div className="card-body event-card  ">
-            <h5 className="card-title text-center"> {date.toDateString()} </h5>
+            <h5 className="card-title bg-pink text-center"> {date.toDateString()} </h5>
             <h4 className="card-title text-center">
               {" "}
-              <strong>{time}  </strong>{" "}
+              <strong className="text-primary" >{time}  </strong>{" "}
             </h4>
             <hr></hr>
-            <h5 className="card-title text-center mt-2">
+            <h5 className="card-title  text-center mt-2">
               {" "}
-              <strong className="mt-2"> {match} </strong>{" "}
+              {match} 
             </h5>
             <h6 className="m-auto">
               {" "}
