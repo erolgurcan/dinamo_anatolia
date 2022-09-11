@@ -24,7 +24,7 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-light bg-dinamo">
         <a className="navbar-brand text-light px-2" href="#">
           {" "}
           <FontAwesomeIcon icon={faSmile} /> {user}

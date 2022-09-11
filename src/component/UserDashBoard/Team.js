@@ -222,7 +222,7 @@ const Team = () => {
             <div className="col-xl-6 col-sm-12">
               <div className="card shadow mb-4 ">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold text-primary">
+                  <h6 className="m-0 font-weight-bold text-dinamo">
                     Leage Standing
                   </h6>
                 </div>
@@ -239,7 +239,7 @@ const Team = () => {
             <div className="col-xl-6 col-sm-12">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold text-primary">
+                  <h6 className="m-0 font-weight-bold text-dinamo">
                     Score Table
                   </h6>
                 </div>
@@ -258,13 +258,13 @@ const Team = () => {
             <div className="col-xl-6 col-sm-12">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold text-primary">
+                  <h6 className="m-0 font-weight-bold text-dinamo">
                     Schedule
                   </h6>
                 </div>
                 <div
                   className="card-body h-100 overflow-auto"
-                  style={{ minHeight: "500px" }}
+                  style={{ maxHeight: "500px" }}
                 >
 
                     <div className="chart-area">
@@ -277,11 +277,11 @@ const Team = () => {
             <div className="col-xl-6 col-sm-12">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold text-primary">Chart</h6>
+                  <h6 className="m-0 font-weight-bold text-dinamo">Chart</h6>
                 </div>
                 <div
                   className="card-body h-100 overflow-auto"
-                  style={{ minHeight: "500px" }}
+                  style={{ maxHeight: "500px" }}
                 >
                   <div className="chart-area">
                     <TeamBarChart score={score}></TeamBarChart>

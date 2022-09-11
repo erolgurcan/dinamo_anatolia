@@ -19,10 +19,10 @@ const CalenderWeather = ({ data }) => {
   }, []);
 
   return (
-    <div>
-      <div class="card-body p-4">
-        <h4 class="mb-1 sfw-normal"> {data?.event_location} </h4>
-        <p class="mb-2">
+    <div className="col-sm-12" >
+      <div className="card-body col-sm-12 weather-card">
+        <h4 className="mb-1 sfw-normal text-secondary"> {data?.event_location} </h4>
+        <p className="mb-2">
           Current temperature: <strong> {weather?.main.temp} °C</strong>
         </p>
         <p>
@@ -33,8 +33,8 @@ const CalenderWeather = ({ data }) => {
           <strong>{weather?.main.temp_min} °C</strong>
         </p>
 
-        <div class="d-flex flex-row align-items-center text-center">
-          <p class="me-4 text-center m-auto">
+        <div className="d-flex flex-row align-items-center text-center">
+          <p className="me-4 text-center m-auto">
             {" "}
             {weather?.weather[0].main +
               " " +

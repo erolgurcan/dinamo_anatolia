@@ -77,12 +77,12 @@ const Login = () => {
     <>
       <Navigation />
 
-      <section className="vh-100 login-background  col-sm-12">
-      <div className="h-100 col-lg-6 m-auto col-sm-12">
+      <section className="vh-100 login-background  col-sm-12 login-card text-center">
+      <div className="h-100 col-lg-6 col-sm-12 m-auto">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10 col-sm-12 ">
               <div className="card" style={{ borderRadius: "1rem" }}>
-                <div className="col-md-2 col-lg-7 d-flex align-items-center m-auto">
+                <div className="col-lg-7 col-s-12 d-flex align-items-center m-auto">
                   <div className="card-body text-black">
                     <form>
                       <div className="d-flex align-items-center mb-3 pb-1">
@@ -124,7 +124,7 @@ const Login = () => {
                         <label className="form-label">Password</label>
                       </div>
 
-                      <div className="mb-2">
+                      <div className="text-center ">
                         {isloading ? (
                           <div className="m-auto text-center">
                             <div className="spinner-grow" role="status"></div>
@@ -133,7 +133,7 @@ const Login = () => {
                         ) : (
                           <button
                             onClick={onSubmitHandler}
-                            className="btn btn-dark btn-lg btn-block mb-2"
+                            className="btn btn-primary btn-lg btn-block"
                             type="button"
                           >
                             Login
@@ -146,12 +146,11 @@ const Login = () => {
                           Invalid Password or Email{" "}
                         </h6>
                       )}
-                      <div className="d-flex flex-column text-center mt-2">
-                        <h6 className="mt-2" >Do you want to join us?</h6>
-                        <h6 className="mt-2" >Fill out your form below...</h6>
-                        <Link className="nav-link text-primary  m-auto  font-weight-bold" to="/register">
+                      <div className="d-flex flex-column text-center">
+                        <h6 className="mt-2 mb-2"  >Do you want to join us? Then fill out your form below...</h6>
+                        <Link className="nav-link text-light  m-auto  font-weight-bold" to="/register">
                           {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
-                          <span> Register</span>
+                          <button className="btn btn-secondary text-light" > Join Us</button>
                         </Link>
                       </div>
                     </form>

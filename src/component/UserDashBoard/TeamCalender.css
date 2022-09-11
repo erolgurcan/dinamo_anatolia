@@ -1,6 +1,12 @@
+.events-frame{
+  max-height: 800px;
+}
+.weather-card{
+  min-width: 200px
+}
+
 iframe {
-  height: 30rem;
-  margin: auto;
+display: none;
 }
 
 .DatePicker {
@@ -687,4 +693,14 @@ iframe {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@media (min-width: 768px) {
+  iframe {
+    height: 30rem;
+    margin: auto;
+    display: block;
+  }
+  
+
 }

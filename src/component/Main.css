@@ -12,6 +12,7 @@
  */
 :root {
   --bs-blue: #0d6efd;
+  --bs-dinamo: #00007eff;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
   --bs-pink: #ee0979;
@@ -7748,6 +7749,11 @@ textarea.form-control-lg {
   color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
 }
 
+.text-dinamo {
+  --bs-text-opacity: 1;
+  color: var(--bs-dinamo) !important;
+}
+
 .text-secondary {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
@@ -7837,6 +7843,10 @@ textarea.form-control-lg {
 .bg-primary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+}
+.bg-dinamo {
+  --bs-bg-opacity: 1;
+  background-color: var(--bs-dinamo) !important;
 }
 
 .bg-secondary {
@@ -8003,6 +8013,9 @@ textarea.form-control-lg {
 }
 
 @media (min-width: 576px) {
+
+
+
   .float-sm-start {
     float: left !important;
   }

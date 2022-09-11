@@ -19,17 +19,17 @@ const CalenderSchedueleCard = ( {data} ) => {
               <strong>{ time}  </strong>{" "}
             </h4>
             <hr></hr>
-            <h3 className="card-title text-center mt-2">
+            <h5 className="card-title text-center mt-2 text-dinamo">
               {" "}
-              <strong className="mt-2"> {match} </strong>{" "}
-            </h3>
-            <h4 c>
-              {" "}
+              <strong > {match} </strong>{" "}
+            </h5>
+            <h6 className="m-auto text-primary" >
               <FontAwesomeIcon icon={faMapPin} /> {data.event_location}
-            </h4>
+            </h6>
           </div>
         </div>
       </div>
+
     </>
   );
 }
