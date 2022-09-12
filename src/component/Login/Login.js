@@ -133,7 +133,7 @@ const Login = () => {
                         ) : (
                           <button
                             onClick={onSubmitHandler}
-                            className="btn btn-primary btn-lg btn-block"
+                            className="btn btn-dinamo btn-lg btn-block"
                             type="button"
                           >
                             Login
@@ -150,7 +150,7 @@ const Login = () => {
                         <h6 className="mt-2 mb-2"  >Do you want to join us? Then fill out your form below...</h6>
                         <Link className="nav-link text-light  m-auto  font-weight-bold" to="/register">
                           {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
-                          <button className="btn btn-secondary text-light" > Join Us</button>
+                          <button className="btn btn-secondary text-light" > Join</button>
                         </Link>
                       </div>
                     </form>

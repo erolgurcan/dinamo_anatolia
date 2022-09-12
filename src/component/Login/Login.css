@@ -15,10 +15,7 @@
     align-items: center;
   }
 
-  .login-card{
-    min-width: 300px;
-    margin: auto;
-  }
+  
 
   @media (min-width: 576px) {
 

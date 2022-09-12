@@ -3063,6 +3063,14 @@ textarea.form-control-lg {
   background-color: #ee0979;
   border-color: #ee0979;
 }
+
+
+.btn-dinamo {
+  color: #fff;
+  background-color: #00007eff;
+  border-color: #00007eff;
+}
+
 .btn-primary:hover {
   color: #fff;
   background-color: #ca0867;
@@ -11365,7 +11373,7 @@ header.masthead {
   padding-bottom: 7rem;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../images/main.jpg");
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   background-attachment: scroll;
   background-size: cover;
 }

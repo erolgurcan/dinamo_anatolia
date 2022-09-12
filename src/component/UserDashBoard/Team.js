@@ -12,11 +12,55 @@ const Team = () => {
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(false);
   const [leauge, setLeague] = useState([]);
+  const [refreshDate, setRefreshDate] = useState();
 
   const onChangeHandler = (e) => {
     const league = document.getElementById("league").value;
     getStanding();
     getScoredTable();
+  };
+
+  const refreshTrigger = async () => {
+    await fetch("https://da-scrapper.herokuapp.com/get_data");
+  };
+
+  const getRefresh = async () => {
+    const response = await fetch(
+      "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/get_refresh",
+      {
+        method: "GET",
+        headers: { token: localStorage.token },
+      }
+    );
+    const jsonData = await response.json();
+
+    const refreshedTime =
+      new Date(jsonData[0].refreshed_date).valueOf() / (1000 * 60 * 60);
+    const currentTime = new Date().valueOf() / (1000 * 60 * 60);
+
+    console.log(new Date().toISOString());
+    console.log(new Date(jsonData[0].refreshed_date).toISOString());
+
+    if (currentTime - refreshedTime > 2) {
+      var refDate = new Date().toISOString();
+      console.log(refDate);
+      const body = { refDate };
+      setLoading(true);
+
+      refreshTrigger();
+
+      await fetch(
+        "https://dinamo-anatolia.herokuapp.com/teamInfo/set_refresh",
+        {
+          method: "POST",
+          headers: { token: localStorage.token },
+          body: JSON.stringify(body),
+        }
+      );
+    }
+    setTimeout( ()=> {
+      setLoading(false);
+    }, 5000)
   };
 
   const getLeague = async () => {
@@ -49,8 +93,6 @@ const Team = () => {
     );
     const jsonData = await response.json();
     setStanding(jsonData);
-    setLoading(true);
-    console.log(jsonData);
   };
 
   const getScoredTable = async () => {
@@ -68,34 +110,38 @@ const Team = () => {
     );
     const jsonData = await response.json();
     setScore(jsonData);
-    setLoading(true);
-    console.log(jsonData);
   };
 
   const getSchedule = async () => {
-    setLoading(true);
     const response = await fetch(
-      "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/get_event", {
-        method:"GET",
+      "https://dinamo-anatolia.herokuapp.com/" + "teamInfo/get_event",
+      {
+        method: "GET",
         headers: {
           token: localStorage.token,
-        }
+        },
       }
     );
     const jsonData = await response.json();
     setSchedule(jsonData);
-    setLoading(false);
   };
+
+  useEffect(() => {
+    getRefresh();
+  }, []);
 
   useEffect(() => {
     getScoredTable();
     getStanding();
     getSchedule();
     getLeague();
-  }, []);
+    console.log("useEffect");
+  }, [loading]);
 
   return (
     <>
+      {" "}
+      {loading && <div className="loading"> Refreshing Tables&#8230;</div>}
       <div
         id="content-wrapper"
         className="d-flex flex-column w-100 team-background"
@@ -258,19 +304,15 @@ const Team = () => {
             <div className="col-xl-6 col-sm-12">
               <div className="card shadow mb-4">
                 <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 className="m-0 font-weight-bold text-dinamo">
-                    Schedule
-                  </h6>
+                  <h6 className="m-0 font-weight-bold text-dinamo">Schedule</h6>
                 </div>
                 <div
                   className="card-body h-100 overflow-auto"
                   style={{ maxHeight: "500px" }}
                 >
-
-                    <div className="chart-area">
-                      <TeamSchedule schedule={schedule}></TeamSchedule>
-                    </div>
-
+                  <div className="chart-area">
+                    <TeamSchedule schedule={schedule}></TeamSchedule>
+                  </div>
                 </div>
               </div>
             </div>
