@@ -5,6 +5,7 @@ import TeamTable from "./TeamTable/TeamTable";
 import TeamScoreTable from "./TeamTable/TeamScoreTable";
 import TeamSchedule from "./TeamTable/TeamSchedule";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
 
 const Team = () => {
   const [score, setScore] = useState([]);
@@ -21,7 +22,21 @@ const Team = () => {
   };
 
   const refreshTrigger = async () => {
-    await fetch("https://da-scrapper.herokuapp.com/get_data");
+    console.log("started trigger");
+
+    axios
+      .get("https://da-scrapper.herokuapp.com/get_data")
+      .then((res) => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+      
+
+    //  const result = await fetch("https://da-scrapper.herokuapp.com/get_data");
+
   };
 
   const getRefresh = async () => {
@@ -37,9 +52,6 @@ const Team = () => {
     const refreshedTime =
       new Date(jsonData[0].refreshed_date).valueOf() / (1000 * 60 * 60);
     const currentTime = new Date().valueOf() / (1000 * 60 * 60);
-
-    console.log(new Date().toISOString());
-    console.log(new Date(jsonData[0].refreshed_date).toISOString());
 
     if (currentTime - refreshedTime > 2) {
       var refDate = new Date().toISOString();
@@ -58,9 +70,7 @@ const Team = () => {
         }
       );
     }
-    setTimeout( ()=> {
-      setLoading(false);
-    }, 5000)
+
   };
 
   const getLeague = async () => {

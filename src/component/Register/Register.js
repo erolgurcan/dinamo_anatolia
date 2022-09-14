@@ -9,7 +9,6 @@ import RegisterModal from "./RegisterModal";
 import emailjs from "emailjs-com";
 
 const Register = () => {
-
   console.log(process.env);
 
   const form = useRef();
@@ -42,36 +41,57 @@ const Register = () => {
     ) {
       console.log("missing field");
       setValidInfo(false);
-    }else{
+    } else {
       setValidInfo(true);
+      emailjs
+        .sendForm(
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_TEMP_ID1,
+          form.current,
+          process.env.REACT_APP_USER_ID
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+
+      emailjs
+        .sendForm(
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_TEMP_ID2,
+          form.current,
+          process.env.REACT_APP_USER_ID
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+
+      setUserInfo(userInfo);
+      setModalShow(true);
     }
-
-    
-
-    emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMP_ID1 ,form.current ,process.env.REACT_APP_USER_ID)
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        console.log(error.text);
-    });
-
-    emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMP_ID2 ,form.current ,process.env.REACT_APP_USER_ID)
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        console.log(error.text);
-    });
-
-    setUserInfo(userInfo);
-    setModalShow(true);
   };
 
   return (
     <>
-    { modalShow && <RegisterModal className= "mt-10" modalShownHandler =  {modalShownHandler} userInfo= {userInfo}   /> } 
-      <Navigation /> 
+      {modalShow && (
+        <RegisterModal
+          className="mt-10"
+          modalShownHandler={modalShownHandler}
+          userInfo={userInfo}
+        />
+      )}
+      <Navigation />
       <section className="vh-100 register-background col-xs-12 w-100 p-4 ">
-      <div className="h-100 col-lg-6 m-auto col-sm-12">
+        <div className="h-100 col-lg-6 m-auto col-sm-12">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10">
               <div className="card" style={{ borderRadius: "1rem" }}>
@@ -102,6 +122,7 @@ const Register = () => {
                       </div>
 
                       <div className="form-outline ">
+                        <label className="form-label">Name</label>
                         <input
                           type="text"
                           id="name"
@@ -109,10 +130,10 @@ const Register = () => {
                           placeholder="Name"
                           name="user_name"
                         />
-                        <label className="form-label">Name</label>
                       </div>
 
                       <div className="form-outline ">
+                        <label className="form-label">Surname</label>
                         <input
                           type="text"
                           id="surname"
@@ -120,10 +141,10 @@ const Register = () => {
                           placeholder="Surname"
                           name="user_lastname"
                         />
-                        <label className="form-label">Surname</label>
                       </div>
 
                       <div className="form-outline ">
+                        <label className="form-label">Email address</label>
                         <input
                           type="email"
                           id="emailLogin"
@@ -131,10 +152,10 @@ const Register = () => {
                           placeholder="some@some.com"
                           name="user-email"
                         />
-                        <label className="form-label">Email address</label>
                       </div>
 
                       <div className="form-outline ">
+                        <label className="form-label">Phone Number</label>
                         <input
                           type="text"
                           id="phoneNumber"
@@ -142,10 +163,13 @@ const Register = () => {
                           placeholder="xxx-xxx-xx-xx"
                           name="user_phonenumber"
                         />
-                        <label className="form-label">Phone Number</label>
                       </div>
-                      {!validInfo   && <h4 style={{color: "red", textAlign: "center"}} >Missing Fields</h4>}
-                      <div className="m-2">
+                      {!validInfo && (
+                        <h4 style={{ color: "red", textAlign: "center" }}>
+                          Missing Fields
+                        </h4>
+                      )}
+                      <div className="m-2 text-center ">
                         <button
                           onClick={onSubmitHander}
                           className="btn btn-dark btn-lg btn-block"

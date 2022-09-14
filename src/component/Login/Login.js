@@ -78,10 +78,10 @@ const Login = () => {
       <Navigation />
 
       <section className="vh-100 login-background  col-sm-12 login-card text-center">
-      <div className="h-100 col-lg-6 col-sm-12 m-auto">
+        <div className="h-100 col-lg-6 col-sm-12 m-auto">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-xl-10 col-sm-12 ">
-              <div className="card" style={{ borderRadius: "1rem" }}>
+              <div className="card login-card " style={{ borderRadius: "1rem" }}>
                 <div className="col-lg-7 col-s-12 d-flex align-items-center m-auto">
                   <div className="card-body text-black">
                     <form>
@@ -105,26 +105,29 @@ const Login = () => {
                       >
                         Sign into your account
                       </h5>
-
+                      <label className="form-label">Email address</label>
                       <div className="form-outline ">
                         <input
                           type="email"
                           id="emailLogin"
                           className="form-control form-control-lg"
+                          placeholder="Email"
                         />
-                        <label className="form-label">Email address</label>
+                        
                       </div>
 
-                      <div className="form-outline mb-2">
+                      <div className="form-outline mb-4">
+                      <label className="form-label">Password</label>
                         <input
                           type="password"
                           id="passwordLogin"
                           className="form-control form-control-lg"
+                          placeholder="Password"
                         />
-                        <label className="form-label">Password</label>
+                        
                       </div>
 
-                      <div className="text-center ">
+                      <div className=" d-flex flex-column w-75 m-auto text-center ">
                         {isloading ? (
                           <div className="m-auto text-center">
                             <div className="spinner-grow" role="status"></div>
@@ -133,7 +136,7 @@ const Login = () => {
                         ) : (
                           <button
                             onClick={onSubmitHandler}
-                            className="btn btn-dinamo btn-lg btn-block"
+                            className="btn btn-dinamo btn-lg "
                             type="button"
                           >
                             Login
@@ -147,11 +150,19 @@ const Login = () => {
                         </h6>
                       )}
                       <div className="d-flex flex-column text-center">
-                        <h6 className="mt-2 mb-2"  >Do you want to join us? Then fill out your form below...</h6>
-                        <Link className="nav-link text-light  m-auto  font-weight-bold" to="/register">
-                          {/* <i classNameNameName="fas fa-fw fa-tachometer-alt"></i> */}
-                          <button className="btn btn-secondary text-light" > Join</button>
-                        </Link>
+                        <h6 className="mt-2 mb-2">
+                          Do you want to join us? Then fill out your form
+                          below...
+                        </h6>
+                        <button
+                          className="btn btn-secondary text-light w-75 m-auto font-weight-bold"
+                          onClick={() => {
+                            navigate("/register", { replace: true });
+                          }}
+                        >
+                          {" "}
+                          Join{" "}
+                        </button>
                       </div>
                     </form>
                   </div>
