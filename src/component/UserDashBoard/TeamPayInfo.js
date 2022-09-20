@@ -68,11 +68,11 @@ const TeamPayInfo = () => {
 
     const len = document.getElementsByClassName("user-row").length;
     for (let i = 0; i < len; i++) {
-      let date = document.getElementsByClassName("user-row")[i]?.childNodes[3];
+      let date = document.getElementsByClassName("user-row")[i]?.childNodes[2];
       let playerStatus =
-        document.getElementsByClassName("user-row")[i]?.childNodes[2];
+        document.getElementsByClassName("user-row")[i]?.childNodes[1];
       let playerPayStatus =
-        document.getElementsByClassName("user-row")[i]?.childNodes[4];
+        document.getElementsByClassName("user-row")[i]?.childNodes[3];
       if (date) {
         date.innerText = date.innerText.split("T")[0];
         date.className = "label label-default";

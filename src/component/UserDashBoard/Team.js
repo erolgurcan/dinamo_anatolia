@@ -14,6 +14,7 @@ const Team = () => {
   const [loading, setLoading] = useState(false);
   const [leauge, setLeague] = useState([]);
   const [refreshDate, setRefreshDate] = useState();
+  const [loadingStatus, setLoadingStatus] = useState();
 
   const onChangeHandler = (e) => {
     const league = document.getElementById("league").value;
@@ -24,19 +25,26 @@ const Team = () => {
   const refreshTrigger = async () => {
     console.log("started trigger");
 
-    axios
+    await axios
       .get("https://da-scrapper.herokuapp.com/get_data")
       .then((res) => {
+        setLoadingStatus("Refreshing Score Table");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    await axios
+      .get("https://da-scrapper.herokuapp.com/pay_table")
+      .then((res) => {
+        setLoadingStatus("Refreshing Pay Table");
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
 
-      
-
     //  const result = await fetch("https://da-scrapper.herokuapp.com/get_data");
-
   };
 
   const getRefresh = async () => {
@@ -70,7 +78,6 @@ const Team = () => {
         }
       );
     }
-
   };
 
   const getLeague = async () => {
@@ -151,7 +158,12 @@ const Team = () => {
   return (
     <>
       {" "}
-      {loading && <div className="loading"> Refreshing Tables&#8230;</div>}
+      {loading && (
+        <div className="loading">
+          {" "}
+          Refreshing Tables&#8230; {loadingStatus}{" "}
+        </div>
+      )}
       <div
         id="content-wrapper"
         className="d-flex flex-column w-100 team-background"
