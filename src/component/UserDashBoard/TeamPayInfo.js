@@ -127,7 +127,7 @@ const TeamPayInfo = () => {
   return (
     <div className="p-4">
       <h2 className="mt-4"> Pay Table </h2>
-      <div className="col-12 d-flex flex-row flex-wrap mt-4">
+      <div className="col-12 d-flex flex-row flex-wrap  justify-content-center mt-4">
         <TeamBanner header = {"Total Income 2022-2023"} data = {"7823 $"}  />
         <TeamBanner header = {"Total Expense "} data = {"7349 $"}  />
         <TeamBanner header = {"Total Balance"} data = {"474 $"}  />

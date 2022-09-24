@@ -50,8 +50,8 @@ const TeamCalender = () => {
     <>
       <h3 className="mx-4 mb-2 text-dinamo mt-4 ">Events</h3>
       <div className="row">
-        <div className="d-flex flex-row flex-wrap justify-content-center  ">
-          <div className="col-lg-6 col-12 mt-4">
+        <div className="d-flex  flex-wrap justify-content-center  ">
+          <div className="col-lg-6 col-sm-12 mt-4">
             <h2 className="mx-2 mb-2 text-primary mt-4 mx-1 text-center">
               Upcoming Events
             </h2>

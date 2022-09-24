@@ -25,7 +25,7 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-dinamo">
-        <a className="navbar-brand text-light px-2" href="#">
+        <a className="navbar-brand text-light px-2" >
           {" "}
           <FontAwesomeIcon icon={faSmile} /> {user}
         </a>
@@ -40,7 +40,7 @@ const UserNavBar = ({ setIsAuth, user, userStatus }) => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
           <div className="navbar-nav col-10">
             <Link className="nav-link text-light " to="/">
               <FontAwesomeIcon icon={faHouse} />
