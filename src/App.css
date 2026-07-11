@@ -1,43 +1,588 @@
-.App {
-  text-align: center;
+/* ============================================================
+   Dinamo Anatolia — landing page theme
+   Palette: club navy, floodlight gold, night ink, warm cream
+   ============================================================ */
+:root {
+  --da-navy: #00007e;
+  --da-navy-deep: #000055;
+  --da-ink: #05051f;
+  --da-gold: #ffc107;
+  --da-cream: #f6f4ef;
 }
 
-.body{
-  margin-top: 0px;
-  background-color: aliceblue;
+body {
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+section[id],
+#join {
+  scroll-margin-top: 76px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ---------- Navigation ---------- */
+.da-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.2rem;
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.da-nav--solid {
+  background-color: rgba(5, 5, 31, 0.94);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.da-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.da-nav-brand:hover {
+  color: var(--da-gold);
+  text-decoration: none;
+}
+.da-brand-badge {
+  height: 2.4rem;
+  background: #fff;
+  border-radius: 6px;
+  padding: 3px 4px;
+}
+
+.da-nav-links {
+  display: none;
+}
+.da-nav-links a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  padding: 0.3rem 0;
+}
+.da-nav-links a:not(.da-nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--da-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.da-nav-links a:not(.da-nav-cta):hover {
+  color: #fff;
+}
+.da-nav-links a:not(.da-nav-cta):hover::after {
+  transform: scaleX(1);
+}
+.da-nav-cta {
+  background: var(--da-gold);
+  color: #16130a !important;
+  padding: 0.55rem 1.4rem !important;
+  border-radius: 50rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.da-nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 193, 7, 0.35);
+}
+
+.da-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 0;
+  padding: 0.6rem;
+  cursor: pointer;
+  z-index: 120;
+}
+.da-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.da-burger.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.da-burger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.da-burger.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.da-mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 105;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 1.7rem;
+  background: linear-gradient(160deg, var(--da-navy) 0%, var(--da-ink) 70%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.da-mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.da-mobile-menu a {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+}
+.da-mobile-menu a:hover {
+  color: var(--da-gold);
+  text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 992px) {
+  .da-nav {
+    padding: 0.8rem 2.2rem;
   }
-  to {
-    transform: rotate(360deg);
+  .da-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.7rem;
+  }
+  .da-burger,
+  .da-mobile-menu {
+    display: none;
+  }
+}
+
+/* ---------- Hero ---------- */
+.da-hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 6.5rem 1.5rem 5rem;
+  color: #fff;
+  background: linear-gradient(
+      180deg,
+      rgba(5, 5, 31, 0.55) 0%,
+      rgba(5, 5, 31, 0.7) 60%,
+      var(--da-ink) 100%
+    ),
+    url("./images/main.jpg") center / cover no-repeat;
+}
+
+.da-hero-crest {
+  width: 88px;
+  height: 136px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+  margin-bottom: 1.8rem;
+}
+
+.da-eyebrow {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--da-gold);
+  margin-bottom: 1rem;
+}
+
+.da-hero-title {
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+}
+
+.da-hero-tag {
+  max-width: 38rem;
+  margin: 0 auto 2.4rem;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.da-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  transform: translateX(-50%) rotate(45deg);
+  animation: da-bob 1.8s ease-in-out infinite;
+}
+
+@keyframes da-bob {
+  0%, 100% { transform: translateX(-50%) rotate(45deg) translate(0, 0); opacity: 0.6; }
+  50% { transform: translateX(-50%) rotate(45deg) translate(6px, 6px); opacity: 1; }
+}
+
+/* ---------- Buttons ---------- */
+.btn-da,
+.btn-da-ghost {
+  display: inline-block;
+  border-radius: 50rem;
+  padding: 0.9rem 2.2rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  margin: 0.35rem;
+}
+
+.btn-da {
+  background: var(--da-gold);
+  color: #16130a;
+  border: 2px solid var(--da-gold);
+}
+.btn-da:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 193, 7, 0.35);
+  color: #16130a;
+  text-decoration: none;
+}
+
+.btn-da-ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+}
+.btn-da-ghost:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ---------- Identity strip ---------- */
+.da-strip {
+  background: var(--da-navy);
+  color: #fff;
+  padding: 2.6rem 0;
+}
+.da-strip-word {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--da-gold);
+  margin-bottom: 0.35rem;
+}
+.da-strip-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ---------- Story chapters ---------- */
+.da-main {
+  background: var(--da-cream);
+}
+.da-section {
+  padding: 5.5rem 0;
+}
+.da-section h2 {
+  font-weight: 800;
+  color: #14142b;
+}
+
+.da-frame {
+  position: relative;
+  display: inline-block;
+}
+.da-frame img {
+  position: relative;
+  z-index: 1;
+  border-radius: 14px;
+  box-shadow: 0 18px 45px rgba(5, 5, 31, 0.18);
+}
+.da-frame::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  bottom: 16px;
+  left: 16px;
+  border: 3px solid var(--da-gold);
+  border-radius: 14px;
+}
+.da-frame--flip::before {
+  top: -16px;
+  right: 16px;
+  bottom: 16px;
+  left: -16px;
+}
+
+.da-swatch {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4a4a5a;
+}
+.da-swatch::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+.da-swatch--gold::before { background: var(--da-gold); }
+.da-swatch--black::before { background: #111; }
+.da-swatch--navy::before { background: var(--da-navy); }
+
+/* ---------- Türkiye & Canada roots ---------- */
+.da-roots {
+  padding: 5.5rem 0;
+  color: #fff;
+  background: radial-gradient(ellipse at top, #0b0b3b 0%, var(--da-ink) 65%);
+}
+.da-roots h2 {
+  color: #fff;
+  font-weight: 800;
+}
+.da-roots-lead {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.da-country-card {
+  height: 100%;
+  text-align: center;
+  padding: 2.4rem 1.8rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.da-country-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 193, 7, 0.45);
+}
+.da-country-mark {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  margin: 0 auto 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.da-country-mark--tr { background: #e30a17; }
+.da-country-mark--ca { background: #d52b1e; }
+.da-country-sub {
+  display: block;
+  color: var(--da-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.da-country-card h3 {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+.da-country-card p {
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+}
+
+.da-bridge {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-top: 2.8rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.da-bridge::before,
+.da-bridge::after {
+  content: "";
+  flex: 1;
+  border-top: 2px dashed rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Values ---------- */
+.da-value-card {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 14px;
+  border-top: 4px solid var(--da-navy);
+  box-shadow: 0 12px 32px rgba(5, 5, 31, 0.08);
+  padding: 2.25rem 1.75rem 1.75rem;
+  height: 100%;
+  transition: transform 0.25s ease;
+}
+.da-value-card:hover {
+  transform: translateY(-6px);
+}
+.da-value-num {
+  position: absolute;
+  top: -1.6rem;
+  right: 0.4rem;
+  font-size: 6.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(0, 0, 126, 0.07);
+  user-select: none;
+}
+.da-value-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--da-navy);
+}
+.da-value-card p {
+  color: #4a4a5a;
+  margin: 0;
+}
+
+/* ---------- Join CTA ---------- */
+.da-cta {
+  color: #fff;
+  text-align: center;
+  padding: 6rem 1.5rem;
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.03) 0 2px,
+      transparent 2px 26px
+    ),
+    linear-gradient(135deg, var(--da-navy) 0%, var(--da-ink) 85%);
+}
+.da-cta h2 {
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #fff;
+}
+.da-cta p {
+  max-width: 34rem;
+  margin: 1rem auto 2.25rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- Footer ---------- */
+.da-footer {
+  background: #000;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+.da-footer a {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s ease;
+}
+.da-footer a:hover {
+  color: var(--da-gold);
+}
+
+/* ---------- Reveal on scroll ---------- */
+.da-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.da-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 575.98px) {
+  .da-section {
+    padding: 3.8rem 0;
+  }
+  .da-roots {
+    padding: 3.8rem 0;
+  }
+  .da-frame::before {
+    top: -10px;
+    right: -10px;
+    bottom: 10px;
+    left: 10px;
+  }
+  .da-frame--flip::before {
+    top: -10px;
+    right: 10px;
+    bottom: 10px;
+    left: -10px;
+  }
+  .da-hero-crest {
+    width: 74px;
+    height: 114px;
+  }
+  .btn-da,
+  .btn-da-ghost {
+    padding: 0.85rem 1.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .da-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .da-scroll-hint {
+    animation: none;
+  }
+  .da-value-card,
+  .da-country-card,
+  .da-nav-cta,
+  .btn-da,
+  .btn-da-ghost {
+    transition: none;
   }
 }
